@@ -65,4 +65,9 @@ public class CarTrailer extends Truck {
     protected void brake() {
 
     }
+
+    @Override
+    protected void speedFactor() {
+
+    }
 }
