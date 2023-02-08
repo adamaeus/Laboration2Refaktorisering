@@ -5,5 +5,6 @@ import Architechture.Animal;
 //jykygjgjj
 public class Kangaroo extends Animal {
 
-    //prutt
+
+    // sluta klottra på väggarna tack!!! Mvh missnöjd rektor Jansson
 }
