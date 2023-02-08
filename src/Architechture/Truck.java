@@ -25,14 +25,14 @@ public abstract class Truck {
     public int getNrDoors() {return nrDoors;}
     public Color getColor() {return color;}
     public double getWeight() {return weight;}
-    public static double getCurrentSpeed() {return currentSpeed;}
+    public double getCurrentSpeed() {return currentSpeed;}
 
 
     protected abstract void openRamp(double amount);
 
     protected abstract void closeRamp(double amount);
 
-    protected abstract void load();
+    protected abstract void load(Car car);
 
     protected abstract void unLoad();
 

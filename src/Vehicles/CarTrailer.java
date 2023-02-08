@@ -1,5 +1,6 @@
 package Vehicles;
 
+import Architechture.Car;
 import Architechture.Truck;
 import Vehicles.Components.Engine;
 import Vehicles.Components.TruckBed;
@@ -32,8 +33,8 @@ public class CarTrailer extends Truck {
     }
 
     @Override
-    protected void load() {
-
+    protected void load(Car car) {
+        trailerTruckBed.load(car);
     }
 
     @Override

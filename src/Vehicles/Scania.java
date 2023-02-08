@@ -1,5 +1,6 @@
 package Vehicles;
 
+import Architechture.Car;
 import Architechture.Truck;
 import Vehicles.Components.Engine;
 import Vehicles.Components.TruckBed;
@@ -33,13 +34,14 @@ public class Scania extends Truck {
     }
 
     @Override
-    protected void load() {
-
+    protected void load(Car car) {
+        scaniaTruckBed.load(car);
     }
+
 
     @Override
     protected void unLoad() {
-
+        scaniaTruckBed.unload();
     }
 
     @Override
@@ -64,6 +66,11 @@ public class Scania extends Truck {
 
     @Override
     protected void brake() {
+
+    }
+
+    @Override
+    protected void speedFactor() {
 
     }
 }

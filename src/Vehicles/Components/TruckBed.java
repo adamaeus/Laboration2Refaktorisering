@@ -95,7 +95,7 @@ public class TruckBed {
         }
     }
     private boolean unLoadHelper(){
-        return (getCurrentAngle() == getMaxAngle() && Truck.getCurrentSpeed() == 0);
+        return (getCurrentAngle() == getMaxAngle() && Engine.getCurrentSpeed() == 0);
     }
 
     private void unLoadCar(){
