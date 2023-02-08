@@ -46,9 +46,7 @@ public abstract class Truck {
 
     protected abstract void brake();
 
-    protected abstract void speedFactor();
-
-
+    protected abstract double speedFactor();
 
 
 

@@ -9,10 +9,9 @@ import java.awt.*;
 public class Volvo240 extends Car {
 
     Engine volvoEngine = new Engine(100);
-    MovingSystem volvoGPS = new MovingSystem();
 
 
-    public Volvo240(String modelName, Color color, int nrDoors, double weight) {
+    public Volvo240() {
         super("Volvo240", Color.BLACK, 4, 700);
     }
 
@@ -21,7 +20,7 @@ public class Volvo240 extends Car {
 
     @Override
     public void move() {
-        volvoGPS.move(volvoEngine.getCurrentSpeed());
+        volvoEngine.move();
     }
 
     @Override
@@ -36,12 +35,12 @@ public class Volvo240 extends Car {
 
     @Override
     public void turnRight() {
-        volvoGPS.turnRight();
+        volvoEngine.turnRight();
     }
 
     @Override
     public void turnLeft() {
-        volvoGPS.turnLeft();
+        volvoEngine.turnLeft();
     }
     @Override
     public double speedFactor() {

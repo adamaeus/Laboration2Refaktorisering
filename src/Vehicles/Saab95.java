@@ -11,7 +11,7 @@ public class Saab95 extends Car {
     Engine saabEngine = new Engine(125);
     public boolean turboOn;
 
-    public Saab95(String modelName, int nrDoors, double enginePower, Color color, double weight) {
+    public Saab95() {
         super("Saab95", Color.RED, 2, 500);
     }
 
@@ -36,27 +36,27 @@ public class Saab95 extends Car {
 
     @Override
     protected void move() {
-
+        saabEngine.move();
     }
 
     @Override
     protected void gas() {
-
+        saabEngine.gas(1.3, speedFactor());
     }
 
     @Override
     protected void brake() {
-
+        saabEngine.brake(1.3, speedFactor());
     }
 
     @Override
     protected void turnRight() {
-
+        saabEngine.turnRight();
     }
 
     @Override
     protected void turnLeft() {
-
+        saabEngine.turnLeft();
     }
 
 

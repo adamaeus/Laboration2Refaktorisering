@@ -1,15 +1,12 @@
 package Vehicles.Components;
 
 import Architechture.Car;
-import Architechture.Truck;
 import Operations.LoadingSystem;
-
-import static java.lang.System.out;
 
 
 public class TruckBed {
 
-    private LoadingSystem<Car> truckBedLoading = new LoadingSystem<>();
+    private LoadingSystem<Car> truckBedLoadingSystem = new LoadingSystem<>();
 
 
     public TruckBed(double carryCapacity, double maxAngle, String bedType) {
@@ -42,8 +39,8 @@ public class TruckBed {
         return maxAngle;
     }
 
-    public LoadingSystem<Car> getTruckBedLoading() {
-        return truckBedLoading;
+    public LoadingSystem<Car> getTruckBedLoadingSystem() {
+        return truckBedLoadingSystem;
     }
 
 
@@ -60,8 +57,11 @@ public class TruckBed {
         }
     }
 
-    public void closeRamp(double amount) {
-        decrementAngle(amount);
+    /**
+     * Avslutar med ramp metoderna, lite fix här, typ closeRamp ska itne ta input och bara stänga rampen direkt.
+     */
+    public void closeRamp() {
+        decrementAngle(0);
     }
 
     private void decrementAngle(double amount) {
@@ -85,7 +85,7 @@ public class TruckBed {
                 (carryCapacity - getCurrentLoad()) > car.getWeight();
     }
     private void loadCar(Car car) {
-            truckBedLoading.load(car);
+            truckBedLoadingSystem.load(car);
             currentLoad = currentLoad + car.getWeight();
         }
 
@@ -94,12 +94,13 @@ public class TruckBed {
             unLoadCar();
         }
     }
+
     private boolean unLoadHelper(){
-        return (getCurrentAngle() == getMaxAngle() && Engine.getCurrentSpeed() == 0);
+        return (getCurrentAngle() == getMaxAngle());
     }
 
     private void unLoadCar(){
-        truckBedLoading.unLoad();
+        truckBedLoadingSystem.unLoad();
     }
 
 

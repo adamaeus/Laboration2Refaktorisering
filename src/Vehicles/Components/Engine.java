@@ -1,6 +1,11 @@
 package Vehicles.Components;
 
+import Operations.MovingSystem;
+
 public class Engine {
+
+
+    MovingSystem engineMovingSystem = new MovingSystem();
 
     //--------------------CONSTRUCTOR--------------------\\
 
@@ -31,6 +36,7 @@ public class Engine {
 
 
 
+
     public void gas(double amount, double speedFactor){
         if (amount >= 0 && amount <= 1.0){
             incrementSpeed(speedFactor, amount);
@@ -51,6 +57,19 @@ public class Engine {
 
     private void decrementSpeed(double amount, double speedFactor) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor * amount, 0);
+    }
+
+
+
+    //---------------MOVING-SYSTEM DELEGATING METHODS---------------\\
+    public void move(){
+        engineMovingSystem.move(getCurrentSpeed());
+    }
+    public void turnLeft(){
+        engineMovingSystem.turnLeft();
+    }
+    public void turnRight(){
+        engineMovingSystem.turnRight();
     }
 
 
