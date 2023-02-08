@@ -1,22 +1,34 @@
 package Vehicles;
 
 import Architechture.Truck;
+import Vehicles.Components.Engine;
+import Vehicles.Components.TruckBed;
 
 import java.awt.*;
 
 public class CarTrailer extends Truck {
+
+
+
+    Engine trailerEngine = new Engine(300);
+
+    TruckBed trailerTruckBed = new TruckBed(2000, 1, "TrailerRamp");
+
+
+
+
     public CarTrailer(String modelName, int nrDoors, Color color, double weight) {
-        super(modelName, nrDoors, color, weight);
+        super("CarTrailer", 2, Color.RED, 5000);
     }
 
     @Override
-    protected void openRamp() {
-
+    protected void openRamp(double amount) {
+        trailerTruckBed.openRamp(1);
     }
 
     @Override
-    protected void closeRamp() {
-
+    protected void closeRamp(double amount) {
+        trailerTruckBed.closeRamp(0);
     }
 
     @Override
