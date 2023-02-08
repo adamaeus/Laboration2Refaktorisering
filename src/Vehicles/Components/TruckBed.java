@@ -4,9 +4,10 @@ import Architechture.Car;
 import Architechture.Truck;
 import Operations.LoadingSystem;
 
+import static java.lang.System.out;
+
 
 public class TruckBed {
-
 
     private LoadingSystem<Car> truckBedLoading = new LoadingSystem<>();
 
@@ -28,32 +29,89 @@ public class TruckBed {
     public double getCarryCapacity() {
         return carryCapacity;
     }
+
     public String getBedType() {
         return bedType;
     }
-    public double getCurrentLoad() {return (currentLoad);}
+
+    public double getCurrentLoad() {return currentLoad;}
+
     public double getCurrentAngle() {return currentAngle;}
+
     public double getMaxAngle() {
         return maxAngle;
     }
+
     public LoadingSystem<Car> getTruckBedLoading() {
         return truckBedLoading;
     }
 
 
-    public void openRamp(double amount){
+
+
+    //-------------------RAMP METHODS-------------------\\
+    public void openRamp(double amount) {
         incrementAngle(amount);
     }
 
-
-    private void incrementAngle(double amount){
-        while(currentAngle < amount){
+    private void incrementAngle(double amount) {
+        while (currentAngle < amount) {
             currentAngle = Math.min(amount, maxAngle);
         }
     }
 
-    public void closeRamp(double amount){
-
+    public void closeRamp(double amount) {
+        decrementAngle(amount);
     }
 
+    private void decrementAngle(double amount) {
+        if (amount == 0) {
+            currentAngle = 0;
+        } else { while (currentAngle > amount) {
+                currentAngle = Math.min(getCurrentAngle() - amount, maxAngle);
+            }
+        }
+    }
+
+
+    //-------------------LOAD METHODS-------------------\\
+    public void load(Car car) {
+        if (loadHelper(car)){
+            loadCar(car);
+        }
+    }
+    private boolean loadHelper (Car car) {
+        return getCurrentAngle() == getMaxAngle() &&
+                (carryCapacity - getCurrentLoad()) > car.getWeight();
+    }
+    private void loadCar(Car car) {
+            truckBedLoading.load(car);
+            currentLoad = currentLoad + car.getWeight();
+        }
+
+    public void unload(){
+        if(unLoadHelper()){
+            unLoadCar();
+        }
+    }
+    private boolean unLoadHelper(){
+        return (getCurrentAngle() == getMaxAngle() && Truck.getCurrentSpeed() == 0);
+    }
+
+    private void unLoadCar(){
+        truckBedLoading.unLoad();
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+

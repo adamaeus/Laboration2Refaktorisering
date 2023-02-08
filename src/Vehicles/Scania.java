@@ -9,10 +9,10 @@ import java.awt.*;
 
 public class Scania extends Truck {
 
+
     Engine scaniaEngine = new Engine(300);
 
     TruckBed scaniaTruckBed = new TruckBed(1000, 70, "ScaniaFlak");
-
 
 
     public Scania(String modelName, int nrDoors, Color color, double weight) {
@@ -23,13 +23,13 @@ public class Scania extends Truck {
 
 
     @Override
-    protected void openRamp() {
-
+    protected void openRamp(double amount) {
+        scaniaTruckBed.openRamp(amount);
     }
 
     @Override
-    protected void closeRamp() {
-
+    protected void closeRamp(double amount) {
+        scaniaTruckBed.closeRamp(amount);
     }
 
     @Override
