@@ -31,7 +31,7 @@ public class Volvo240 extends Car {
 
     @Override
     public void brake(double amount) {
-        volvoEngine.brake(1.0, speedFactor());
+        volvoEngine.brake(amount, speedFactor());
     }
 
     @Override

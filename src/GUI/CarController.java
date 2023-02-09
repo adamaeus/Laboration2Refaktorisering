@@ -79,9 +79,9 @@ public class CarController {
         }
     }
     void brake(int amount) {
-        double gas = ((double) amount) / 100;
+        double brake = ((double) amount) / 100;
         for (Car car : cars) {
-            car.brake(0.5);
+            car.brake(brake);
         }
     }
 }

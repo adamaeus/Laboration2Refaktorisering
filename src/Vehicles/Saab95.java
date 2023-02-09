@@ -61,7 +61,7 @@ public class Saab95 extends Car {
 
     @Override
     public void brake(double amount) {
-        saabEngine.brake(1.0, speedFactor());
+        saabEngine.brake(amount, speedFactor());
     }
 
     @Override
