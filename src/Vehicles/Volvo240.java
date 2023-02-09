@@ -10,7 +10,6 @@ public class Volvo240 extends Car {
 
     Engine volvoEngine = new Engine(100);
 
-    MovingSystem volvoMovingSystem = new MovingSystem();
 
 
     public Volvo240() {
@@ -22,32 +21,43 @@ public class Volvo240 extends Car {
 
     @Override
     public void move() {
-        volvoMovingSystem.move(volvoEngine.getCurrentSpeed());
+        carMovingSystem.move(volvoEngine.getCurrentSpeed());
     }
 
     @Override
     public void gas(double amount) {
-        volvoEngine.gas(1.25, speedFactor());
+        volvoEngine.gas(amount, speedFactor());
     }
 
     @Override
-    public void brake() {
-        volvoEngine.brake(1.25, speedFactor());
+    public void brake(double amount) {
+        volvoEngine.brake(1.0, speedFactor());
     }
 
     @Override
     public void turnRight() {
-        volvoMovingSystem.turnRight();
+        carMovingSystem.turnRight();
     }
 
     @Override
     public void turnLeft() {
-        volvoMovingSystem.turnLeft();
+        carMovingSystem.turnLeft();
     }
     @Override
-    public double speedFactor() {
+    protected double speedFactor() {
         return volvoEngine.getEnginePower() * 0.01 * trimFactor;
     }
+
+    @Override
+    public double getWeight() {
+        return 0;
+    }
+
+    @Override
+    public double getCurrentSpeed(){
+        return volvoEngine.getCurrentSpeed();
+    }
+
 }
 
 

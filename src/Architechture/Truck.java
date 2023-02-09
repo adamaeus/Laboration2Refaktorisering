@@ -1,16 +1,24 @@
 package Architechture;
 
+import Operations.MovingSystem;
+
 import java.awt.*;
 
 public abstract class Truck {
 
 
+
+    protected MovingSystem truckMovingSystem = new MovingSystem();
     public Truck(String modelName, int nrDoors, Color color, double weight) {
         this.modelName = modelName;
         this.nrDoors = nrDoors;
         this.color = color;
         this.weight = weight;
 
+    }
+
+    public MovingSystem getTruckMovingSystem (){
+        return truckMovingSystem;
     }
 
     private String modelName;

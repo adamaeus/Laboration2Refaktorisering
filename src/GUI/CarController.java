@@ -1,6 +1,8 @@
 package GUI;
 
 import Architechture.Car;
+import Operations.MovingSystem;
+import Vehicles.Saab95;
 import Vehicles.Volvo240;
 
 import javax.swing.*;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
  */
 
 public class CarController {
+
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -41,17 +44,26 @@ public class CarController {
 
         // Start the timer
         cc.timer.start();
+
+
+
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
+
+
+    //getPosition() , vet inte om användbar eller ej
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getPosition().getX());
-                int y = (int) Math.round(car.getPosition().getY());
+                car.getCarMovingSystem().move(car.getCurrentSpeed());
+                System.out.println(car.getCarMovingSystem().getX());
+                System.out.println(car.getCarMovingSystem().getY());
+                System.out.println(car.getCurrentSpeed());
+                int x = (int) Math.round(car.getCarMovingSystem().getX());
+                int y = (int) Math.round(car.getCarMovingSystem().getY());
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -62,9 +74,14 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
-                ) {
+        for (Car car : cars) {
             car.gas(gas);
+        }
+    }
+    void brake(int amount) {
+        double gas = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(0.5);
         }
     }
 }

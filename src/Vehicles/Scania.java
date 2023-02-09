@@ -14,7 +14,6 @@ public class Scania extends Truck {
 
     Engine scaniaEngine = new Engine(250);
 
-    MovingSystem scaniaMovingSystem = new MovingSystem();
 
     TruckBed scaniaTruckBed = new TruckBed(1000, 70, "ScaniaFlak");
 
@@ -25,10 +24,7 @@ public class Scania extends Truck {
 
 
 
-    /**
-     * 8 feb. 22:55
-     * Lade till kravet open och close ramp endast kan ske om farten är 0.
-     */
+
     @Override
     protected void openRamp(double amount) {
         if (scaniaEngine.getCurrentSpeed() == 0) {
@@ -44,11 +40,6 @@ public class Scania extends Truck {
     }
 
 
-
-    /**
-     * 8 feb. 22:55
-     * Lade till kravet på att lastning och avlastning endast kan ske om farten är 0.
-     */
     @Override
     protected void load(Car car) {
         if(scaniaEngine.getCurrentSpeed() == 0){
@@ -64,23 +55,20 @@ public class Scania extends Truck {
         }
     }
 
-    /**
-     * 23:05
-     * fixade delegering från engine i båda truckarna, alltså trailer/scania -> till sin respektive engine, från engine -> movingsystem.
-     */
+
     @Override
     protected void move() {
-        scaniaMovingSystem.move(scaniaEngine.getCurrentSpeed());
+        truckMovingSystem.move(scaniaEngine.getCurrentSpeed());
     }
 
     @Override
     protected void turnLeft() {
-        scaniaMovingSystem.turnLeft();
+        truckMovingSystem.turnLeft();
     }
 
     @Override
     protected void turnRight() {
-        scaniaMovingSystem.turnRight();
+        truckMovingSystem.turnRight();
     }
 
     @Override

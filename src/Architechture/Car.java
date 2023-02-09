@@ -2,6 +2,7 @@ package Architechture;
 
 import Operations.MovingSystem;
 import Vehicles.Components.Engine;
+import Vehicles.Volvo240;
 
 import java.awt.*;
 
@@ -14,27 +15,33 @@ public abstract class Car {
         this.weight = weight;
     }
 
+    protected MovingSystem carMovingSystem = new MovingSystem();
+
+    public MovingSystem getCarMovingSystem (){
+        return carMovingSystem;
+    }
+
+
     private final double weight;
     private final Color color;
     private final String modelName;
     private final int nrDoors;
-    private double currentSpeed;
-
 
     public String getModelName() { return modelName; }
     public int getNrDoors() {return nrDoors;}
     public Color getColor() {return color;}
-    public double getWeight() {return weight;}
-    public double getCurrentSpeed() {return currentSpeed;}
+    public abstract double getWeight();
+    public abstract double getCurrentSpeed();
 
 
     protected abstract void move();
     public abstract void gas(double amount);
-    protected abstract void brake();
+    public abstract void brake(double amount);
     protected abstract void turnRight();
     protected abstract void turnLeft();
 
-    public abstract double speedFactor();
+    protected abstract double speedFactor();
+
 
 
 }

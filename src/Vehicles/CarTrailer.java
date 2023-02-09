@@ -16,7 +16,6 @@ public class CarTrailer extends Truck {
 
     TruckBed trailerTruckBed = new TruckBed(2000, 1, "TrailerRamp");
 
-    MovingSystem trailerMovingSystem = new MovingSystem();
 
 
     public CarTrailer() {
@@ -72,17 +71,17 @@ public class CarTrailer extends Truck {
 
     @Override
     protected void move() {
-        trailerMovingSystem.move(getCurrentSpeed());
+        truckMovingSystem.move(getCurrentSpeed());
     }
 
     @Override
     protected void turnLeft() {
-        trailerMovingSystem.turnLeft();
+        truckMovingSystem.turnLeft();
     }
 
     @Override
     protected void turnRight() {
-        trailerMovingSystem.turnRight();
+        truckMovingSystem.turnRight();
     }
 
     /**

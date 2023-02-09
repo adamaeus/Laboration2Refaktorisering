@@ -11,7 +11,7 @@ public class Saab95 extends Car {
 
     Engine saabEngine = new Engine(125);
 
-    MovingSystem saabMovingSystem = new MovingSystem();
+
     public boolean turboOn;
 
     public Saab95() {
@@ -31,15 +31,25 @@ public class Saab95 extends Car {
 
 
     @Override
-    public double speedFactor() {
+    protected double speedFactor() {
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return saabEngine.getEnginePower()* 0.01 * turbo;
     }
 
     @Override
+    public double getWeight() {
+        return 0;
+    }
+
+    @Override
+    public double getCurrentSpeed() {
+        return saabEngine.getCurrentSpeed();
+    }
+
+    @Override
     protected void move() {
-        saabMovingSystem.move(saabEngine.getCurrentSpeed());
+        carMovingSystem.move(saabEngine.getCurrentSpeed());
     }
 
     @Override
@@ -47,19 +57,21 @@ public class Saab95 extends Car {
         saabEngine.gas(1.3, speedFactor());
     }
 
+
+
     @Override
-    protected void brake() {
-        saabEngine.brake(1.3, speedFactor());
+    public void brake(double amount) {
+        saabEngine.brake(1.0, speedFactor());
     }
 
     @Override
     protected void turnRight() {
-        saabMovingSystem.turnRight();
+        carMovingSystem.turnRight();
     }
 
     @Override
     protected void turnLeft() {
-        saabMovingSystem.turnLeft();
+        carMovingSystem.turnLeft();
     }
 
 
