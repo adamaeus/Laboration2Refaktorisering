@@ -10,6 +10,8 @@ public class Volvo240 extends Car {
 
     Engine volvoEngine = new Engine(100);
 
+    MovingSystem volvoMovingSystem = new MovingSystem();
+
 
     public Volvo240() {
         super("Volvo240", Color.BLACK, 4, 700);
@@ -20,11 +22,11 @@ public class Volvo240 extends Car {
 
     @Override
     public void move() {
-        volvoEngine.move();
+        volvoMovingSystem.move(volvoEngine.getCurrentSpeed());
     }
 
     @Override
-    public void gas() {
+    public void gas(double amount) {
         volvoEngine.gas(1.25, speedFactor());
     }
 
@@ -35,12 +37,12 @@ public class Volvo240 extends Car {
 
     @Override
     public void turnRight() {
-        volvoEngine.turnRight();
+        volvoMovingSystem.turnRight();
     }
 
     @Override
     public void turnLeft() {
-        volvoEngine.turnLeft();
+        volvoMovingSystem.turnLeft();
     }
     @Override
     public double speedFactor() {

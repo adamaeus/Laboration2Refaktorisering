@@ -2,6 +2,7 @@ package Vehicles;
 
 import Architechture.Car;
 import Architechture.Truck;
+import Operations.MovingSystem;
 import Vehicles.Components.Engine;
 import Vehicles.Components.TruckBed;
 
@@ -15,7 +16,7 @@ public class CarTrailer extends Truck {
 
     TruckBed trailerTruckBed = new TruckBed(2000, 1, "TrailerRamp");
 
-
+    MovingSystem trailerMovingSystem = new MovingSystem();
 
 
     public CarTrailer() {
@@ -71,17 +72,17 @@ public class CarTrailer extends Truck {
 
     @Override
     protected void move() {
-        trailerEngine.move();
+        trailerMovingSystem.move(getCurrentSpeed());
     }
 
     @Override
     protected void turnLeft() {
-        trailerEngine.turnLeft();
+        trailerMovingSystem.turnLeft();
     }
 
     @Override
     protected void turnRight() {
-        trailerEngine.turnRight();
+        trailerMovingSystem.turnRight();
     }
 
     /**

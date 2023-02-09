@@ -29,7 +29,7 @@ public abstract class Car {
 
 
     protected abstract void move();
-    protected abstract void gas();
+    public abstract void gas(double amount);
     protected abstract void brake();
     protected abstract void turnRight();
     protected abstract void turnLeft();

@@ -11,6 +11,14 @@ public class MovingSystem implements Movable {
     private double y;
 
 
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
     public void turnLeft() {
         switch (direction) {
             case RIGHT -> direction = Directions.UP;

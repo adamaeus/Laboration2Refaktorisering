@@ -2,6 +2,7 @@ package Vehicles;
 
 import Architechture.Car;
 import Architechture.Truck;
+import Operations.MovingSystem;
 import Vehicles.Components.Engine;
 import Vehicles.Components.TruckBed;
 import Vehicles.Components.TruckBed;
@@ -12,6 +13,8 @@ public class Scania extends Truck {
 
 
     Engine scaniaEngine = new Engine(250);
+
+    MovingSystem scaniaMovingSystem = new MovingSystem();
 
     TruckBed scaniaTruckBed = new TruckBed(1000, 70, "ScaniaFlak");
 
@@ -67,17 +70,17 @@ public class Scania extends Truck {
      */
     @Override
     protected void move() {
-        scaniaEngine.move();
+        scaniaMovingSystem.move(scaniaEngine.getCurrentSpeed());
     }
 
     @Override
     protected void turnLeft() {
-        scaniaEngine.turnLeft();
+        scaniaMovingSystem.turnLeft();
     }
 
     @Override
     protected void turnRight() {
-        scaniaEngine.turnRight();
+        scaniaMovingSystem.turnRight();
     }
 
     @Override

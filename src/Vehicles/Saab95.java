@@ -1,6 +1,7 @@
 package Vehicles;
 
 import Architechture.Car;
+import Operations.MovingSystem;
 import Vehicles.Components.Engine;
 
 import java.awt.*;
@@ -9,6 +10,8 @@ public class Saab95 extends Car {
 
 
     Engine saabEngine = new Engine(125);
+
+    MovingSystem saabMovingSystem = new MovingSystem();
     public boolean turboOn;
 
     public Saab95() {
@@ -36,11 +39,11 @@ public class Saab95 extends Car {
 
     @Override
     protected void move() {
-        saabEngine.move();
+        saabMovingSystem.move(saabEngine.getCurrentSpeed());
     }
 
     @Override
-    protected void gas() {
+    public void gas(double amount) {
         saabEngine.gas(1.3, speedFactor());
     }
 
@@ -51,12 +54,12 @@ public class Saab95 extends Car {
 
     @Override
     protected void turnRight() {
-        saabEngine.turnRight();
+        saabMovingSystem.turnRight();
     }
 
     @Override
     protected void turnLeft() {
-        saabEngine.turnLeft();
+        saabMovingSystem.turnLeft();
     }
 
 
