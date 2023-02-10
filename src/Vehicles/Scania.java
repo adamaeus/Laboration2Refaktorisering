@@ -24,18 +24,30 @@ public class Scania extends Truck {
 
 
 
+    //TODO FIXA DENNA VICINITY METODEN
+    /*
+    public boolean carVicinity(Car car){
+        return Math.abs(car.getX() - getX()) <= 5.0 && (Math.abs(car.getY() - getY()) <= 5.0);
+
+    }
+    */
 
     @Override
-    protected void openRamp(double amount) {
+    protected void openRamp() {
         if (scaniaEngine.getCurrentSpeed() == 0) {
-            scaniaTruckBed.openRamp(amount);
+            scaniaTruckBed.openRamp();
         }
     }
 
     @Override
-    protected void closeRamp(double amount) {
+    protected void closeRamp() {
         if (scaniaEngine.getCurrentSpeed() == 0) {
             scaniaTruckBed.closeRamp();
+        }
+    }
+    protected void setScaniaAngle(double amount){
+        if (scaniaEngine.getCurrentSpeed() == 0) {
+            scaniaTruckBed.setAngle(amount);
         }
     }
 

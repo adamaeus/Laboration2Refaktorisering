@@ -36,9 +36,9 @@ public abstract class Truck {
     public double getCurrentSpeed() {return currentSpeed;}
 
 
-    protected abstract void openRamp(double amount);
+    protected abstract void openRamp();
 
-    protected abstract void closeRamp(double amount);
+    protected abstract void closeRamp();
 
     protected abstract void load(Car car);
 

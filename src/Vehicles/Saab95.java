@@ -65,12 +65,12 @@ public class Saab95 extends Car {
     }
 
     @Override
-    protected void turnRight() {
+    public void turnRight() {
         carMovingSystem.turnRight();
     }
 
     @Override
-    protected void turnLeft() {
+    public void turnLeft() {
         carMovingSystem.turnLeft();
     }
 

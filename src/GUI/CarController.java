@@ -1,5 +1,8 @@
 package GUI;
 
+import Animals.Kangaroo;
+import Animals.KangarooKid;
+import Architechture.Animal;
 import Architechture.Car;
 import Operations.MovingSystem;
 import Vehicles.Saab95;
@@ -32,6 +35,8 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
 
+    //ArrayList<Animal> animals = new ArrayList<>();
+
     //methods:
 
     public static void main(String[] args) {
@@ -40,11 +45,17 @@ public class CarController {
 
         cc.cars.add(new Volvo240());
 
+
+        // KANGAROO DAISY
+        //cc.animals.add(new Kangaroo(Color.GRAY, 20, "DAISY"));
+
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
         // Start the timer
         cc.timer.start();
+
+
 
 
 
@@ -82,6 +93,7 @@ public class CarController {
 
     boolean setParameters(Car car, Frame frame){
 
+        return null;
     }
 
 
@@ -91,6 +103,18 @@ public class CarController {
             if(car.getCarMovingSystem().getY() > frame.drawPanel.getY()){
             }
             car.brake(brake);
+        }
+    }
+
+    void turnRight(){
+        for (Car car : cars){
+            car.turnRight();
+        }
+    }
+
+    void turnLeft(){
+        for (Car car : cars){
+            car.turnLeft();
         }
     }
 

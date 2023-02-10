@@ -1,6 +1,7 @@
 package Vehicles;
 
 import Architechture.Car;
+import Operations.Interfaces.Directions;
 import Operations.MovingSystem;
 import Vehicles.Components.Engine;
 
@@ -8,8 +9,9 @@ import java.awt.*;
 
 public class Volvo240 extends Car {
 
-    Engine volvoEngine = new Engine(100);
 
+    // GJORDE PRIVATE OCH LADE TILL EN NY GET ENGINE LÄNGS NED...
+    private Engine volvoEngine = new Engine(100);
 
 
     public Volvo240() {
@@ -43,6 +45,7 @@ public class Volvo240 extends Car {
     public void turnLeft() {
         carMovingSystem.turnLeft();
     }
+
     @Override
     protected double speedFactor() {
         return volvoEngine.getEnginePower() * 0.01 * trimFactor;
@@ -53,8 +56,16 @@ public class Volvo240 extends Car {
         return 0;
     }
 
+
+    // NY GET VOLVOENGINE METOD. MEST AVSETT FÖR TESTERNA.
+
+
+    public Engine getVolvoEngine() {
+        return volvoEngine;
+    }
+
     @Override
-    public double getCurrentSpeed(){
+    public double getCurrentSpeed() {
         return volvoEngine.getCurrentSpeed();
     }
 

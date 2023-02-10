@@ -1,5 +1,7 @@
 package GUI;
 
+import Architechture.Car;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,13 +16,31 @@ public class DrawPanel extends JPanel{
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
     // To keep track of a singel cars position
+
+
+
+    // NYTT
+    BufferedImage saabImage;
     Point volvoPoint = new Point();
 
+
+    // NYTT
+    Point saabPoint = new Point();
+
+    Point carPoint = new Point();
+
+
     // TODO: Make this genereal for all cars
+
+
+    // GJORDE CARPOINT. ¯\_(ツ)_/¯
     void moveit(int x, int y){
         volvoPoint.x = x;
         volvoPoint.y = y;
+        saabPoint.x = x;
+        saabPoint.y = y + 100;
     }
+
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -36,6 +56,7 @@ public class DrawPanel extends JPanel{
             // Rememember to rightclick src New -> Package -> name: GUI.pics -> MOVE *.jpg to GUI.pics.
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -48,6 +69,9 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
+        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null); // see javadoc for more info on the parameters
     }
+
+
 }
