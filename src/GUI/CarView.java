@@ -72,7 +72,7 @@ public class CarView extends JFrame{
         brakeSpinner = new JSpinner(spinnerModel);
 
         brakeSpinner.addChangeListener(new ChangeListener() {
-            @Override
+
             public void stateChanged(ChangeEvent e) {
                 brakeAmount = (int) ((JSpinner)e.getSource()).getValue();
             }

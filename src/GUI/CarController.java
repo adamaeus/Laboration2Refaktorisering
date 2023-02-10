@@ -6,6 +6,7 @@ import Vehicles.Saab95;
 import Vehicles.Volvo240;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -78,10 +79,20 @@ public class CarController {
             car.gas(gas);
         }
     }
+
+    boolean setParameters(Car car, Frame frame){
+
+    }
+
+
     void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Car car : cars) {
+            if(car.getCarMovingSystem().getY() > frame.drawPanel.getY()){
+            }
             car.brake(brake);
         }
     }
+
+
 }
