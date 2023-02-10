@@ -15,7 +15,7 @@ public class Engine {
     }
 
 
-    private double enginePower;
+    private final double enginePower;
     private double currentSpeed;
 
 

@@ -47,23 +47,29 @@ public class TruckBed {
 
 
     //-------------------RAMP METHODS-------------------\\
-    public void openRamp(double amount) {
-        incrementAngle(amount);
+    public void openRamp() {
+        setAngle(1);
+    }
+    public void closeRamp() {
+        setAngle(0);
     }
 
+    public void setAngle(double amount){
+        if (currentAngle < amount){
+            currentAngle = Math.min(amount, maxAngle);
+        }else if (currentAngle > amount){
+            currentAngle = Math.max(amount, 0);
+        }
+    }
+
+
+    // slagit ihop dem till en som heter setAngke, scania har tillgång till den, men cartrailer ej.
+    /*
     private void incrementAngle(double amount) {
         while (currentAngle < amount) {
             currentAngle = Math.min(amount, maxAngle);
         }
     }
-
-    /**
-     * Avslutar med ramp metoderna, lite fix här, typ closeRamp ska itne ta input och bara stänga rampen direkt.
-     */
-    public void closeRamp() {
-        decrementAngle(0);
-    }
-
     private void decrementAngle(double amount) {
         if (amount == 0) {
             currentAngle = 0;
@@ -72,7 +78,7 @@ public class TruckBed {
             }
         }
     }
-
+    */
 
     //-------------------LOAD METHODS-------------------\\
     public void load(Car car) {
@@ -90,13 +96,9 @@ public class TruckBed {
         }
 
     public void unload(){
-        if(unLoadHelper()){
+        if(getCurrentAngle() == getMaxAngle()){
             unLoadCar();
         }
-    }
-
-    private boolean unLoadHelper(){
-        return (getCurrentAngle() == getMaxAngle());
     }
 
     private void unLoadCar(){

@@ -11,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static java.lang.System.out;
-
 /*
 * This class represents the Controller part in the MVC pattern
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
@@ -61,24 +59,18 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
-
-                   out.println(car.getCarMovingSystem().getY());
-                   out.println(frame.getDrawPanelYCoordinate());
-                   if(car.getCarMovingSystem().getY() > frame.getDrawPanelYCoordinate() - 100){
-                       car.getCarEngine().stopEngine();
-                       car.brake(100);
-                   }
-
-                    car.getCarMovingSystem().move(car.getCurrentSpeed());
-                    int x = (int) Math.round(car.getCarMovingSystem().getX());
-                    int y = (int) Math.round(car.getCarMovingSystem().getY());
-                    frame.drawPanel.moveit(x, y);
-                    // repaint() calls the paintComponent method of the panel
-                    frame.drawPanel.repaint();
-                }
+                car.getCarMovingSystem().move(car.getCurrentSpeed());
+                System.out.println(car.getCarMovingSystem().getX());
+                System.out.println(car.getCarMovingSystem().getY());
+                System.out.println(car.getCurrentSpeed());
+                int x = (int) Math.round(car.getCarMovingSystem().getX());
+                int y = (int) Math.round(car.getCarMovingSystem().getY());
+                frame.drawPanel.moveit(x, y);
+                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.repaint();
             }
         }
-
+    }
 
     // Calls the gas method for each car once
     void gas(int amount) {
@@ -88,29 +80,19 @@ public class CarController {
         }
     }
 
-    public boolean carHitsWall(Car car){
-        //parameters
-        double carYPos = car.getCarMovingSystem().getY();
-        double carXPos = car.getCarMovingSystem().getX();
-        int topAndBottomFrame = frame.getDrawPanelXCoordinate();
-        int frameWalls = frame.getDrawPanelYCoordinate();
-        // collisions between car and wall
-        boolean carHitsFloor = carYPos > topAndBottomFrame;
-        boolean carHitsRoof = carYPos < topAndBottomFrame;
-        boolean carHitsRightWall = carXPos > frameWalls;
-        boolean carHitsLeftWall = carXPos < frameWalls;
-        // true if collision occurs
-        return (carHitsFloor);
+    boolean setParameters(Car car, Frame frame){
+
     }
 
 
     void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Car car : cars) {
+            if(car.getCarMovingSystem().getY() > frame.drawPanel.getY()){
+            }
             car.brake(brake);
-        }
         }
     }
 
 
-
+}

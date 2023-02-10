@@ -23,20 +23,24 @@ public class CarTrailer extends Truck {
     }
 
 
+    @Override
+    public double getCurrentSpeed() {
+        return trailerEngine.getCurrentSpeed();
+    }
 
     /**
      * 8 feb. 22:55
      * Lade till kravet open och close ramp endast kan ske om farten är 0.
      */
     @Override
-    protected void openRamp(double amount) {
+    protected void openRamp() {
         if (trailerEngine.getCurrentSpeed() == 0) {
-            trailerTruckBed.openRamp(1);
+            trailerTruckBed.openRamp();
         }
     }
 
     @Override
-    protected void closeRamp(double amount) {
+    protected void closeRamp() {
         if (trailerEngine.getCurrentSpeed() == 0) {
             trailerTruckBed.closeRamp();
         }

@@ -38,6 +38,11 @@ public class Saab95 extends Car {
     }
 
     @Override
+    public Engine getCarEngine() {
+        return saabEngine;
+    }
+
+    @Override
     public double getWeight() {
         return 0;
     }
@@ -59,7 +64,7 @@ public class Saab95 extends Car {
 
     @Override
     public void gas(double amount) {
-        saabEngine.gas(1.3, speedFactor());
+        saabEngine.gas(amount, speedFactor());
     }
 
 
@@ -70,12 +75,12 @@ public class Saab95 extends Car {
     }
 
     @Override
-    protected void turnRight() {
+    public void turnRight() {
         carMovingSystem.turnRight();
     }
 
     @Override
-    protected void turnLeft() {
+    public void turnLeft() {
         carMovingSystem.turnLeft();
     }
 

@@ -8,7 +8,7 @@ public abstract class Truck {
 
 
 
-    protected MovingSystem truckMovingSystem = new MovingSystem();
+
     public Truck(String modelName, int nrDoors, Color color, double weight) {
         this.modelName = modelName;
         this.nrDoors = nrDoors;
@@ -20,6 +20,7 @@ public abstract class Truck {
     public MovingSystem getTruckMovingSystem (){
         return truckMovingSystem;
     }
+    protected MovingSystem truckMovingSystem = new MovingSystem();
 
     private String modelName;
     private int nrDoors;
@@ -33,12 +34,12 @@ public abstract class Truck {
     public int getNrDoors() {return nrDoors;}
     public Color getColor() {return color;}
     public double getWeight() {return weight;}
-    public double getCurrentSpeed() {return currentSpeed;}
+    public abstract double getCurrentSpeed();
 
 
-    protected abstract void openRamp(double amount);
+    protected abstract void openRamp();
 
-    protected abstract void closeRamp(double amount);
+    protected abstract void closeRamp();
 
     protected abstract void load(Car car);
 
