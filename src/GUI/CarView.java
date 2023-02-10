@@ -45,8 +45,6 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
 
-
-
     // NEW BUTTON TURN LEFT
     JButton turnLeftButton = new JButton("Turn left");
 
@@ -193,5 +191,13 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public int getDrawPanelXCoordinate() {
+        return X;
+    }
+
+    public int getDrawPanelYCoordinate() {
+        return (Y-240);
     }
 }
