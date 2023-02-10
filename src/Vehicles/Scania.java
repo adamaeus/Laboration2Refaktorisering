@@ -33,6 +33,11 @@ public class Scania extends Truck {
     */
 
     @Override
+    public double getCurrentSpeed() {
+        return scaniaEngine.getCurrentSpeed();
+    }
+
+    @Override
     protected void openRamp() {
         if (scaniaEngine.getCurrentSpeed() == 0) {
             scaniaTruckBed.openRamp();

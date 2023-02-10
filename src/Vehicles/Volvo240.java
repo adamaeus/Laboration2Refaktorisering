@@ -52,17 +52,16 @@ public class Volvo240 extends Car {
     }
 
     @Override
+    public Engine getCarEngine() {
+        return volvoEngine;
+    }
+
+    @Override
     public double getWeight() {
         return 0;
     }
 
 
-    // NY GET VOLVOENGINE METOD. MEST AVSETT FÖR TESTERNA.
-
-
-    public Engine getVolvoEngine() {
-        return volvoEngine;
-    }
 
     @Override
     public double getCurrentSpeed() {

@@ -22,6 +22,9 @@ public abstract class Car {
     }
 
 
+
+
+
     private final double weight;
     private final Color color;
     private final String modelName;
@@ -42,6 +45,7 @@ public abstract class Car {
 
     protected abstract double speedFactor();
 
+    public abstract Engine getCarEngine();
 
 
 }

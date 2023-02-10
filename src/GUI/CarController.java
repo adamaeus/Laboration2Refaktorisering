@@ -4,8 +4,10 @@ import Animals.Kangaroo;
 import Animals.KangarooKid;
 import Architechture.Animal;
 import Architechture.Car;
+import Architechture.Truck;
 import Operations.MovingSystem;
 import Vehicles.Saab95;
+import Vehicles.Scania;
 import Vehicles.Volvo240;
 
 import javax.swing.*;
@@ -13,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /*
 * This class represents the Controller part in the MVC pattern
@@ -34,8 +37,9 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-
+    ArrayList<Truck> trucks = new ArrayList<>();
     //ArrayList<Animal> animals = new ArrayList<>();
+
 
     //methods:
 
@@ -43,7 +47,12 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
+        cc.cars.add( new Volvo240());
+        cc.cars.add( new Saab95());
+
+
+        cc.trucks.add( new Scania());
+        //cc.objects.add((T) new Volvo240());
 
 
         // KANGAROO DAISY
@@ -69,8 +78,9 @@ public class CarController {
     //getPosition() , vet inte om användbar eller ej
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            actionPerformedTruck(e);
             for (Car car : cars) {
-                car.getCarMovingSystem().move(car.getCurrentSpeed());
+                car.getCarMovingSystem().move((car.getCurrentSpeed()));
                 System.out.println(car.getCarMovingSystem().getX());
                 System.out.println(car.getCarMovingSystem().getY());
                 System.out.println(car.getCurrentSpeed());
@@ -83,6 +93,22 @@ public class CarController {
         }
     }
 
+
+    // ACTION PERFOMED TRUCK
+    public void actionPerformedTruck(ActionEvent e) {
+        for (Truck truck : trucks) {
+            truck.getTruckMovingSystem().move((truck.getCurrentSpeed()));
+            System.out.println(truck.getTruckMovingSystem().getX());
+            System.out.println(truck.getTruckMovingSystem().getY());
+            System.out.println(truck.getTruckMovingSystem());
+            int x = (int) Math.round(truck.getTruckMovingSystem().getX());
+            int y = (int) Math.round(truck.getTruckMovingSystem().getY());
+            frame.drawPanel.moveit(x, y);
+            // repaint() calls the paintComponent method of the panel
+            frame.drawPanel.repaint();
+        }
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
@@ -91,10 +117,6 @@ public class CarController {
         }
     }
 
-    boolean setParameters(Car car, Frame frame){
-
-        return null;
-    }
 
 
     void brake(int amount) {
@@ -115,6 +137,12 @@ public class CarController {
     void turnLeft(){
         for (Car car : cars){
             car.turnLeft();
+        }
+    }
+
+    void startEngine(){
+        for (Car car : cars){
+            car.getCarEngine().startEngine();
         }
     }
 

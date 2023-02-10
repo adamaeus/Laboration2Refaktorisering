@@ -23,6 +23,10 @@ public class CarTrailer extends Truck {
     }
 
 
+    @Override
+    public double getCurrentSpeed() {
+        return trailerEngine.getCurrentSpeed();
+    }
 
     /**
      * 8 feb. 22:55
