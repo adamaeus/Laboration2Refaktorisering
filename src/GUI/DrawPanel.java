@@ -22,6 +22,8 @@ public class DrawPanel extends JPanel{
         volvoPoint.y = y;
     }
 
+
+
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);

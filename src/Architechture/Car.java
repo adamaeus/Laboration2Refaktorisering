@@ -33,7 +33,7 @@ public abstract class Car {
     public abstract double getWeight();
     public abstract double getCurrentSpeed();
 
-
+    public abstract Engine getCarEngine();
     protected abstract void move();
     public abstract void gas(double amount);
     public abstract void brake(double amount);

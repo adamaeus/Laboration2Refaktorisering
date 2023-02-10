@@ -24,6 +24,16 @@ public class CarView extends JFrame{
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
+    public int getDrawPanelXCoordinate(){
+        return X;
+    }
+
+    public int getDrawPanelYCoordinate(){
+        return (Y-240);
+    }
+
+
+
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();

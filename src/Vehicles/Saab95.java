@@ -48,6 +48,11 @@ public class Saab95 extends Car {
     }
 
     @Override
+    public Engine getCarEngine() {
+        return saabEngine;
+    }
+
+    @Override
     protected void move() {
         carMovingSystem.move(saabEngine.getCurrentSpeed());
     }

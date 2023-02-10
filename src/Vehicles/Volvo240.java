@@ -58,6 +58,11 @@ public class Volvo240 extends Car {
         return volvoEngine.getCurrentSpeed();
     }
 
+    @Override
+    public Engine getCarEngine() {
+        return volvoEngine;
+    }
+
 }
 
 
