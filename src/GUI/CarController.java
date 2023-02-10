@@ -1,8 +1,11 @@
 package GUI;
 
+
 import Architechture.Car;
+import Architechture.Truck;
 import Operations.MovingSystem;
 import Vehicles.Saab95;
+import Vehicles.Scania;
 import Vehicles.Volvo240;
 
 import javax.swing.*;
@@ -33,8 +36,10 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-
+    ArrayList<Truck> trucks = new ArrayList<>();
     //methods:
+
+
 
     public static void main(String[] args) {
         // Instance of this class
@@ -48,16 +53,16 @@ public class CarController {
         // Start the timer
         cc.timer.start();
 
+        cc.cars.add( new Volvo240());
+        cc.cars.add( new Saab95());
+
+
+        cc.trucks.add( new Scania());
+        //cc.objects.add((T) new Volvo240());
 
 
     }
 
-    public void turnRight() {
-
-    }
-
-    public void turnLeft() {
-    }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
@@ -67,6 +72,7 @@ public class CarController {
     //getPosition() , vet inte om användbar eller ej
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            actionPerformedTruck(e);
             for (Car car : cars) {
 
                    out.println(car.getCarMovingSystem().getY());
@@ -85,6 +91,21 @@ public class CarController {
                 }
             }
         }
+
+    // ACTION PERFOMED TRUCK
+    public void actionPerformedTruck(ActionEvent e) {
+        for (Truck truck : trucks) {
+            truck.getTruckMovingSystem().move((truck.getCurrentSpeed()));
+            System.out.println(truck.getTruckMovingSystem().getX());
+            System.out.println(truck.getTruckMovingSystem().getY());
+            System.out.println(truck.getTruckMovingSystem());
+            int x = (int) Math.round(truck.getTruckMovingSystem().getX());
+            int y = (int) Math.round(truck.getTruckMovingSystem().getY());
+            frame.drawPanel.moveit(x, y);
+            // repaint() calls the paintComponent method of the panel
+            frame.drawPanel.repaint();
+        }
+    }
 
 
 
@@ -119,7 +140,25 @@ public class CarController {
             car.brake(brake);
         }
         }
+
+    void startEngine(){
+        for (Car car : cars){
+            car.getCarEngine().startEngine();
+        }
     }
+    void turnLeft(){
+        for(Car car : cars){
+            car.getCarMovingSystem().turnLeft();
+        }
+    }
+
+    void turnRight(){
+        for(Car car : cars){
+            car.getCarMovingSystem().turnRight();
+        }
+    }
+
+}
 
 
 

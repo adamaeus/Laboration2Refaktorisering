@@ -22,6 +22,8 @@ public abstract class Truck {
     }
     protected MovingSystem truckMovingSystem = new MovingSystem();
 
+
+
     private String modelName;
     private int nrDoors;
     private Color color;
