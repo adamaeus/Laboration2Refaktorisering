@@ -38,8 +38,10 @@ public class Engine {
 
 
     public void gas(double amount, double speedFactor){
-        if (amount >= 0 && amount <= 1.0){
-            incrementSpeed(speedFactor, amount);
+        if (currentSpeed >= 0.1) {
+            if (amount >= 0 && amount <= 1.0) {
+                incrementSpeed(speedFactor, amount);
+            }
         }
     }
 

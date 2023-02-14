@@ -2,7 +2,6 @@ package Vehicles;
 
 import Architechture.Car;
 import Architechture.Truck;
-import Operations.MovingSystem;
 import Vehicles.Components.Engine;
 import Vehicles.Components.TruckBed;
 
@@ -28,12 +27,9 @@ public class CarTrailer extends Truck {
         return trailerEngine.getCurrentSpeed();
     }
 
-    /**
-     * 8 feb. 22:55
-     * Lade till kravet open och close ramp endast kan ske om farten är 0.
-     */
+
     @Override
-    protected void openRamp() {
+    public void openRamp() {
         if (trailerEngine.getCurrentSpeed() == 0) {
             trailerTruckBed.openRamp();
         }
@@ -49,10 +45,7 @@ public class CarTrailer extends Truck {
 
 
 
-    /**
-     * 8 feb. 22:55
-     * Lade till kravet på att lastning och avlastning endast kan ske om farten är 0.
-     */
+
     @Override
     protected void load(Car car) {
         if (trailerEngine.getCurrentSpeed() == 0) {
@@ -68,10 +61,7 @@ public class CarTrailer extends Truck {
 
     }
 
-    /**
-     * 23:05
-     * fixade delegering från engine i båda truckarna, alltså trailer/scania -> till sin respektive engine, från engine -> movingsystem.
-     */
+
 
     @Override
     protected void move() {
@@ -88,26 +78,32 @@ public class CarTrailer extends Truck {
         truckMovingSystem.turnRight();
     }
 
-    /**
-     * Fixade gas metoderna i båda truckarna.
-     */
-    @Override
-    protected void gas() {
-        trailerEngine.gas(1.0, speedFactor());
-    }
+
+
 
     @Override
-    protected void brake() {
+    public void gas(double amount) {
+        trailerEngine.gas(amount, speedFactor());
+    }
+
+
+    // NYTT 22:30 10 feb (gjorde public
+    @Override
+    public void brake(double amount) {
         trailerEngine.brake(1.0, speedFactor());
     }
 
-    /**
-     * Speedfactor för en truck tänker jag. Flaket väger en del, alltså 3.5 (engine) - 2
-     * @return
-     */
+
     @Override
     protected double speedFactor() {
             return Math.max(trailerEngine.getEnginePower() * 0.01 - (trailerTruckBed.getCarryCapacity() * 0.001), 0.1);
         }
+
+
+        // NYTT 22:30 10 feb
+    @Override
+    public Engine getEngine() {
+        return trailerEngine;
     }
+}
 

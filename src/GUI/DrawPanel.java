@@ -1,6 +1,7 @@
 package GUI;
 
 import Architechture.Car;
+import Operations.Interfaces.Directions;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -34,16 +35,35 @@ public class DrawPanel extends JPanel{
     // TODO: Make this genereal for all cars
 
 
+    private static int witchCar = 1;
+
     // GJORDE CARPOINT. ¯\_(ツ)_/¯
     void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-        saabPoint.x = x;
-        saabPoint.y = y + 100;
-        scaniaPoint.x = x;
-        scaniaPoint.y = y + 200;
+        switch (witchCar) {
+            case 1 -> {
+                volvoPoint.x = x;
+                volvoPoint.y = y;
+                witchCar++;
+            }
+            case 2 -> {
+                saabPoint.x = x;
+                saabPoint.y = y + 100;
+                witchCar++;
+            }
+            case 3 -> {
+                scaniaPoint.x = x;
+                scaniaPoint.y = y + 200;
+                witchCar++;
+            }
 
+        }
+        if ( witchCar > 3){
+            witchCar = 1;
+        }
+
+       // witchCar = witchCar + 1 % 3;
     }
+
 
 
     // Initializes the panel and reads the images

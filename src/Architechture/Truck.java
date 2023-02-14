@@ -1,10 +1,12 @@
 package Architechture;
 
+import Operations.Interfaces.iVehicle;
 import Operations.MovingSystem;
+import Vehicles.Components.Engine;
 
 import java.awt.*;
 
-public abstract class Truck {
+public abstract class Truck implements iVehicle {
 
 
 
@@ -22,6 +24,11 @@ public abstract class Truck {
     }
     protected MovingSystem truckMovingSystem = new MovingSystem();
 
+
+    @Override
+    public MovingSystem getMovingSystem() {
+        return truckMovingSystem;
+    }
 
 
     private String modelName;
@@ -53,12 +60,16 @@ public abstract class Truck {
 
     protected abstract void turnRight();
 
-    protected abstract void gas();
+    @Override
+    public abstract void gas(double amount);
 
-    protected abstract void brake();
+    @Override
+    public abstract void brake(double amount);
 
     protected abstract double speedFactor();
 
+    @Override
+    public abstract Engine getEngine();
 
 
 

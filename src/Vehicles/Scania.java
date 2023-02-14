@@ -38,21 +38,23 @@ public class Scania extends Truck {
     }
 
     @Override
-    protected void openRamp() {
-        if (scaniaEngine.getCurrentSpeed() == 0) {
+    public void openRamp() {
+        if((scaniaEngine.getCurrentSpeed() == 0)){
             scaniaTruckBed.openRamp();
         }
     }
 
     @Override
-    protected void closeRamp() {
+    public void closeRamp() {
         if (scaniaEngine.getCurrentSpeed() == 0) {
             scaniaTruckBed.closeRamp();
         }
     }
-    protected void setScaniaAngle(double amount){
+    public void setScaniaAngle(double amount){
         if (scaniaEngine.getCurrentSpeed() == 0) {
-            scaniaTruckBed.setAngle(amount);
+            if (scaniaTruckBed.getCurrentAngle() >= 1) {
+                scaniaTruckBed.setAngle(amount);
+            }
         }
     }
 
@@ -89,17 +91,28 @@ public class Scania extends Truck {
     }
 
     @Override
-    protected void gas() {
-        scaniaEngine.gas(1.0, speedFactor());
+    public void gas(double amount) {
+        scaniaEngine.gas(amount, speedFactor());
     }
 
+    // NYTT 22:30 10 feb (gjorde public)
     @Override
-    protected void brake() {
+    public void brake(double amount) {
         scaniaEngine.brake(1.0, speedFactor());
     }
 
     @Override
     protected double speedFactor() {
         return Math.max(scaniaEngine.getEnginePower() * 0.01 - (scaniaTruckBed.getCarryCapacity() * 0.001), 01);
+    }
+
+    @Override
+    public Engine getEngine() {
+        return scaniaEngine;
+    }
+
+
+    public TruckBed getScaniaTruckBed(){
+        return scaniaTruckBed;
     }
 }

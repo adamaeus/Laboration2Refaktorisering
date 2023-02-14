@@ -20,7 +20,11 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
+    CarController vehicleC;
+
+    CarController saabC;
+
+    CarController scaniaC;
 
     // KANSKE HÄR DET ÄR FEL FÖR Y AXIS OCH TURNLEFT/TURNRIGHT?
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
@@ -45,12 +49,12 @@ public class CarView extends JFrame{
     JButton stopButton = new JButton("Stop all cars");
 
 
-    // NEW BUTTON TURN LEFT
-    JButton turnLeftButton = new JButton("Turn left");
+    // NYTT. ÄNDRADE BARA NAMNET PÅ BUTTON, NU SVÄNGER DEN VÄNSTER NÄR MAN TRYCKER TURN LEFT
+    JButton turnLeftButton = new JButton("Turn Right");
 
 
-    // NEW BUTTON TURN RIGHT
-    JButton turnRightButton = new JButton ("Turn right");
+    // NYTT
+    JButton turnRightButton = new JButton ("Turn left");
 
 
 
@@ -59,7 +63,7 @@ public class CarView extends JFrame{
 
     // Constructor
     public CarView(String framename, CarController cc){
-        this.carC = cc;
+        this.vehicleC = cc;
         initComponents(framename);
     }
 
@@ -152,14 +156,14 @@ public class CarView extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
+                vehicleC.gas(gasAmount);
             }
         });
 
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(brakeAmount);
+                vehicleC.brake(brakeAmount);
             }
         });
 
@@ -168,16 +172,36 @@ public class CarView extends JFrame{
         turnRightButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turnRight();
+                vehicleC.turnRight();
             }
         });
 
         turnLeftButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.turnLeft();
+                vehicleC.turnLeft();
             }
         });
+
+
+
+
+
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vehicleC.liftBedButton();
+            }
+        });
+
+
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vehicleC.lowerBedButton();
+            }
+        });
+
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.

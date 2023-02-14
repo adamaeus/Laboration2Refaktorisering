@@ -52,7 +52,7 @@ public class Volvo240 extends Car {
     }
 
     @Override
-    public Engine getCarEngine() {
+    public Engine getEngine() {
         return volvoEngine;
     }
 

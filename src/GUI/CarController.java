@@ -3,6 +3,7 @@ package GUI;
 
 import Architechture.Car;
 import Architechture.Truck;
+import Operations.Interfaces.iVehicle;
 import Operations.MovingSystem;
 import Vehicles.Saab95;
 import Vehicles.Scania;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 import static java.lang.System.out;
 
 /*
-* This class represents the Controller part in the MVC pattern
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+* * This class represents the Controller part in the MVC pattern
+* * It's responsibilities is to listen to the View and responds in a appropriate manner by
+* * modifying the model state and the updating the view.
  */
 
 public class CarController {
@@ -37,6 +38,8 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
     ArrayList<Truck> trucks = new ArrayList<>();
+
+    ArrayList <iVehicle> vehicles = new ArrayList<>();
     //methods:
 
 
@@ -45,7 +48,6 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -53,12 +55,16 @@ public class CarController {
         // Start the timer
         cc.timer.start();
 
-        cc.cars.add( new Volvo240());
-        cc.cars.add( new Saab95());
 
 
-        cc.trucks.add( new Scania());
-        //cc.objects.add((T) new Volvo240());
+
+
+        cc.vehicles.add(new Volvo240());
+        cc.vehicles.add(new Saab95());
+        cc.vehicles.add(new Scania());
+
+
+
 
 
     }
@@ -72,89 +78,97 @@ public class CarController {
     //getPosition() , vet inte om användbar eller ej
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            actionPerformedTruck(e);
-            for (Car car : cars) {
-
-                   out.println(car.getCarMovingSystem().getY());
-                   out.println(frame.getDrawPanelYCoordinate());
-                   if(car.getCarMovingSystem().getY() > frame.getDrawPanelYCoordinate() - 100){
-                       car.getCarEngine().stopEngine();
-                       car.brake(100);
-                   }
-
-                    car.getCarMovingSystem().move(car.getCurrentSpeed());
-                    int x = (int) Math.round(car.getCarMovingSystem().getX());
-                    int y = (int) Math.round(car.getCarMovingSystem().getY());
-                    frame.drawPanel.moveit(x, y);
-                    // repaint() calls the paintComponent method of the panel
-                    frame.drawPanel.repaint();
+            for (iVehicle vehicle : vehicles) {
+                if(carHitsWall(vehicle))
+                {
+                    brakeAndTurnAround(vehicle);
                 }
+                out.println(vehicle.getMovingSystem().getY());
+                out.println(frame.getDrawPanelYCoordinate());
+
+                vehicle.getMovingSystem().move(vehicle.getCurrentSpeed());
+                int x = (int) Math.round(vehicle.getMovingSystem().getX());
+                int y = (int) Math.round(vehicle.getMovingSystem().getY());
+                frame.drawPanel.moveit(x, y);
+                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.repaint();
+            }
             }
         }
 
-    // ACTION PERFOMED TRUCK
-    public void actionPerformedTruck(ActionEvent e) {
-        for (Truck truck : trucks) {
-            truck.getTruckMovingSystem().move((truck.getCurrentSpeed()));
-            System.out.println(truck.getTruckMovingSystem().getX());
-            System.out.println(truck.getTruckMovingSystem().getY());
-            System.out.println(truck.getTruckMovingSystem());
-            int x = (int) Math.round(truck.getTruckMovingSystem().getX());
-            int y = (int) Math.round(truck.getTruckMovingSystem().getY());
-            frame.drawPanel.moveit(x, y);
-            // repaint() calls the paintComponent method of the panel
-            frame.drawPanel.repaint();
+
+
+    // NYTT. 23:00 10 feb.
+
+    void brakeAndTurnAround(iVehicle vehicle){
+        vehicle.getEngine().stopEngine();
+
+        for (int i = 0; i < 2; i++) {
+            vehicle.getMovingSystem().turnRight();
         }
+        vehicle.getEngine().startEngine();
+
     }
 
 
 
 
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.gas(gas);
-        }
-    }
-
-    public boolean carHitsWall(Car car){
+    // FIXA FÖR VEHICLE
+    public boolean carHitsWall(iVehicle vehicle){
         //parameters
-        double carYPos = car.getCarMovingSystem().getY();
-        double carXPos = car.getCarMovingSystem().getX();
-        int topAndBottomFrame = frame.getDrawPanelXCoordinate();
-        int frameWalls = frame.getDrawPanelYCoordinate();
+        double carYPos = vehicle.getMovingSystem().getY();
+        double carXPos = vehicle.getMovingSystem().getX();
+        int topAndBottomFrame = frame.getDrawPanelYCoordinate()-50;
+        int frameWalls = frame.getDrawPanelXCoordinate()-50;
+
         // collisions between car and wall
         boolean carHitsFloor = carYPos > topAndBottomFrame;
-        boolean carHitsRoof = carYPos < topAndBottomFrame;
         boolean carHitsRightWall = carXPos > frameWalls;
-        boolean carHitsLeftWall = carXPos < frameWalls;
+        boolean carHitsRoof = carYPos < 0;
+        boolean carHitsLeftWall = carXPos < 0;
+
+        if(carHitsFloor){
+            vehicle.getMovingSystem().setY(topAndBottomFrame);
+        } else if (carHitsRoof) {
+            vehicle.getMovingSystem().setY(0);
+        } else if (carHitsLeftWall) {
+            vehicle.getMovingSystem().setX(0);
+        }
+        else if (carHitsRightWall){
+            vehicle.getMovingSystem().setX(frameWalls);
+        }
+
         // true if collision occurs
-        return (carHitsFloor);
+        return (carHitsFloor || carHitsRightWall || carHitsRoof || carHitsLeftWall);
     }
 
 
+    // NYTT. 23:00 10 feb.
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars) {
-            car.brake(brake);
-        }
-        }
-
-    void startEngine(){
-        for (Car car : cars){
-            car.getCarEngine().startEngine();
+        for (iVehicle vehicle : vehicles) {
+            vehicle.brake(brake);
         }
     }
+
+    void gas(int amount) {
+            double gas = ((double) amount) / 100;
+            for (iVehicle vehicle : vehicles) {
+                vehicle.gas(gas);
+            }
+    }
+
+    // NYTT. 23:00 10 feb.
     void turnLeft(){
-        for(Car car : cars){
-            car.getCarMovingSystem().turnLeft();
+        for(iVehicle vehicle : vehicles){
+            vehicle.getMovingSystem().turnLeft();
         }
     }
 
+    // NYTT. 23:00 10 feb.
     void turnRight(){
-        for(Car car : cars){
-            car.getCarMovingSystem().turnRight();
+        for(iVehicle vehicle : vehicles){
+            vehicle.getMovingSystem().turnRight();
         }
     }
 

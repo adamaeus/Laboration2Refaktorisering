@@ -33,14 +33,17 @@ public class Saab95 extends Car {
     @Override
     protected double speedFactor() {
         double turbo = 1;
-        if(turboOn) turbo = 1.3;
+        if(turboOn) turbo = 4.0;
         return saabEngine.getEnginePower()* 0.01 * turbo;
     }
 
+    // NYTT 22:30 10 feb
     @Override
-    public Engine getCarEngine() {
+    public Engine getEngine() {
         return saabEngine;
     }
+
+
 
     @Override
     public double getWeight() {
@@ -61,8 +64,6 @@ public class Saab95 extends Car {
     public void gas(double amount) {
         saabEngine.gas(amount, speedFactor());
     }
-
-
 
     @Override
     public void brake(double amount) {

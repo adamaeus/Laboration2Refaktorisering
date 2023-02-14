@@ -28,10 +28,16 @@ public class test {
 
 
     @Test public void testTurnRight() {
-        volvo.getCarMovingSystem().direction = Directions.UP;
+        volvo.getMovingSystem().direction = Directions.UP;
         volvo.turnRight();
-        assert (volvo.getCarMovingSystem().direction == Directions.RIGHT);
+        assert (volvo.getMovingSystem().direction == Directions.RIGHT);
 
+    }
+
+    @Test public void testMove(){
+        volvo.getEngine().startEngine();
+        volvo.getMovingSystem().move(1.0);
+        assert (volvo.getCurrentSpeed() > 0);
     }
 
 
@@ -39,9 +45,9 @@ public class test {
     // volvo.startEngineCall();
     @Test public void testTurnRightAndDrive(){
         volvo.getCarMovingSystem().direction = Directions.UP;
-        volvo.getVolvoEngine().startEngine();
+        volvo.getEngine().startEngine();
         volvo.turnRight();
-        volvo.getVolvoEngine().gas(1.0, volvo.getCurrentSpeed());
+        volvo.getEngine().gas(1.0, volvo.getCurrentSpeed());
         volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
         volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
         assert (volvo.getCarMovingSystem().getX() > 0);
@@ -49,9 +55,9 @@ public class test {
 
     @Test public void testTurnLeftAndDrive(){
         volvo.getCarMovingSystem().direction = Directions.UP;
-        volvo.getVolvoEngine().startEngine();
+        volvo.getEngine().startEngine();
         volvo.turnLeft();
-        volvo.getVolvoEngine().gas(1.0, volvo.getCurrentSpeed());
+        volvo.getEngine().gas(1.0, volvo.getCurrentSpeed());
         volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
         volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
         assert (volvo.getCarMovingSystem().getX() < 0);
