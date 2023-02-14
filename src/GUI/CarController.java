@@ -172,6 +172,46 @@ public class CarController {
         }
     }
 
+    void stopEngine(){
+        for(iVehicle vehicle : vehicles){
+            vehicle.getEngine().stopEngine();
+        }
+    }
+
+    void startEngine(){
+        for(iVehicle vehicle : vehicles){
+            vehicle.getEngine().startEngine();
+        }
+    }
+
+    void turnTurboOn(){
+        for(iVehicle vehicle : vehicles) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOn();
+            }
+        }
+    }
+
+    void lowerBedButton(){
+        for(iVehicle vehicle : vehicles){
+        if(vehicle instanceof Scania) {
+            ((Scania) vehicle).openRamp();
+            ((Scania) vehicle).setScaniaAngle(70);
+            if(((Scania) vehicle).getScaniaTruckBed().getCurrentAngle() == 70){
+                out.println("ramp is open");
+            }
+        }
+        }
+    }
+
+
+    void liftBedButton(){
+        for(iVehicle vehicle : vehicles){
+            if(vehicle instanceof Scania) {
+                ((Scania) vehicle).getScaniaTruckBed().closeRamp();
+            }
+        }
+    }
 }
 
 
