@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+
+
+
+
+class TruckBed {
+- truckBedLoadingSystem : LoadingSystem<Car>
+- bedType : String
+- final carryCapacity : double
+
++ TruckBed(double, double, String)
+
+
+}
+
+
+
+
+@enduml

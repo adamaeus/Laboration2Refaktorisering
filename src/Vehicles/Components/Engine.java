@@ -5,8 +5,6 @@ import Operations.MovingSystem;
 public class Engine {
 
 
-    MovingSystem engineMovingSystem = new MovingSystem();
-
     //--------------------CONSTRUCTOR--------------------\\
 
 
@@ -61,20 +59,5 @@ public class Engine {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor * amount, 0);
     }
 
-
-    /*
-
-    //---------------MOVING-SYSTEM DELEGATING METHODS---------------\\
-    public void move(){
-        engineMovingSystem.move(getCurrentSpeed());
-    }
-    public void turnLeft(){
-        engineMovingSystem.turnLeft();
-    }
-    public void turnRight(){
-        engineMovingSystem.turnRight();
-    }
-
-*/
 
 }

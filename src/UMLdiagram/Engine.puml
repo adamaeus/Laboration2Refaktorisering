@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+
+
+class Engine {
+- final enginePower: double
+- currentSpeed : double
++ Engine(double)
++ getEnginePower() : double
++ getCurrentSpeed() : double
++ startEngine() : void
++ stopEngine() : void
++ gas () : void
++ brake : void
+- incrementSpeed() : void
+- decrementSpeed() : void
+}
+
+
+@enduml
