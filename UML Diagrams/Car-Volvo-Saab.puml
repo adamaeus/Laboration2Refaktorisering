@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+iVehicle <|-- Car
+iVehicle <|-- Truck
+
+Car <|-- Volvo240
+Car <|-- Saab95
+
+
+
+
+
+interface iVehicle {
+}
+
+abstract class Truck
+
+
+abstract class Car {
+# carMovingSystem : MovingSystem
+- weight : double
+- color : Color
+- modelName : String
+- nrDoors : int
+----
++ getMovingSystem() : MovingSystem
++ abstract getCurrentSpeed() : double
++ getModelName() : String
++ getNrDoors() : int
++ getColor() : Color
++ abstract getEngine() : Engine
++ abstract getWeight() : double
+# abstract move() : void
++ abstract gas(amount : double) : void
++ abstract brake (amount : double) : void
++ abstract turnRight() : void
++ abstract turnLeft() : void
++ abstract speedFactor() : double
+}
+
+class Volvo240 {
+- final volvoEngine : Engine
+- final trimFactor : double
+----
++ move () : void
++ gas (amount : double) : void
++ brake (amount : double) : void
++ turnRight () : void
++ turnLeft () : void
+# speedFactor () : double
++ getEngine () : Engine
++ getWeight () : double
++ getCurrentSpeed () : double
+}
+
+class Saab95{
+- final saabEngine : Engine
+- turboOn : boolean
+----
++ setTurboOn () : void
++ setTurboOff () : void
+# speedFactor () : double
++ getEngine () : Engine
++ getWeight() : double
++ getCurrentSpeed() : double
+# move() : void
++ gas (amount : double) : void
++ brake (amount : double) : void
++ turnRight () : void
++ turnLeft () : void
+}
+
+
+@enduml

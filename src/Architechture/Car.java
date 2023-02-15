@@ -28,9 +28,9 @@ public abstract class Car implements iVehicle {
 
 
     //----------METHODS----------\\
-    public MovingSystem getCarMovingSystem (){
-        return carMovingSystem;
-    }
+
+    @Override
+    public abstract Engine getEngine();
     public MovingSystem getMovingSystem() {
         return carMovingSystem;
     }
@@ -43,7 +43,7 @@ public abstract class Car implements iVehicle {
 
 
     protected abstract void move();
-    @Override
+
     public abstract void gas(double amount);
     public abstract void brake(double amount);
     public abstract void turnRight();
@@ -51,8 +51,7 @@ public abstract class Car implements iVehicle {
 
     protected abstract double speedFactor();
 
-    @Override
-    public abstract Engine getEngine();
+
 
 
 

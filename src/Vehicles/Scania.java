@@ -12,10 +12,11 @@ import java.awt.*;
 public class Scania extends Truck {
 
 
-    Engine scaniaEngine = new Engine(250);
+    // private för att scaniaEngine bara ska ha åtkomst inne i Scania. final för att den ändras aldrig.
+    private final Engine scaniaEngine = new Engine(250);
 
 
-    TruckBed scaniaTruckBed = new TruckBed(1000, 70, "ScaniaFlak");
+    private final TruckBed scaniaTruckBed = new TruckBed(1000, 70, "ScaniaFlak");
 
 
     public Scania() {

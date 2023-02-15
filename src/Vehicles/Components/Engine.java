@@ -5,8 +5,6 @@ import Operations.MovingSystem;
 public class Engine {
 
 
-    MovingSystem engineMovingSystem = new MovingSystem();
-
     //--------------------CONSTRUCTOR--------------------\\
 
 
@@ -62,19 +60,6 @@ public class Engine {
     }
 
 
-    /*
 
-    //---------------MOVING-SYSTEM DELEGATING METHODS---------------\\
-    public void move(){
-        engineMovingSystem.move(getCurrentSpeed());
-    }
-    public void turnLeft(){
-        engineMovingSystem.turnLeft();
-    }
-    public void turnRight(){
-        engineMovingSystem.turnRight();
-    }
-
-*/
 
 }

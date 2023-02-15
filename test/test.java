@@ -44,23 +44,23 @@ public class test {
     // BORDE KANSKE INFÖRA DELEGATORS SOM ISTÄLLET FÖR ATT KALLA PÅ GETTERS KAN DELEGERA METODANROPET DIREKT ISTÄLLET. TEX:
     // volvo.startEngineCall();
     @Test public void testTurnRightAndDrive(){
-        volvo.getCarMovingSystem().direction = Directions.UP;
+        volvo.getMovingSystem().direction = Directions.UP;
         volvo.getEngine().startEngine();
         volvo.turnRight();
         volvo.getEngine().gas(1.0, volvo.getCurrentSpeed());
-        volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
-        volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
-        assert (volvo.getCarMovingSystem().getX() > 0);
+        volvo.getMovingSystem().move(volvo.getCurrentSpeed());
+        volvo.getMovingSystem().move(volvo.getCurrentSpeed());
+        assert (volvo.getMovingSystem().getX() > 0);
     }
 
     @Test public void testTurnLeftAndDrive(){
-        volvo.getCarMovingSystem().direction = Directions.UP;
+        volvo.getMovingSystem().direction = Directions.UP;
         volvo.getEngine().startEngine();
         volvo.turnLeft();
         volvo.getEngine().gas(1.0, volvo.getCurrentSpeed());
-        volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
-        volvo.getCarMovingSystem().move(volvo.getCurrentSpeed());
-        assert (volvo.getCarMovingSystem().getX() < 0);
+        volvo.getMovingSystem().move(volvo.getCurrentSpeed());
+        volvo.getMovingSystem().move(volvo.getCurrentSpeed());
+        assert (volvo.getMovingSystem().getX() < 0);
     }
 
 

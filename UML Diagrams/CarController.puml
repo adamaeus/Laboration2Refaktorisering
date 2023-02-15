@@ -1,0 +1,23 @@
+@startuml
+
+ActionListener <|-- TimeListener
+
+class CarController {
+-final delay: int
+-timer:Timer
+-frame:CarView
+cars:ArrayList<Cars>
+brakeAndTurnAround(vehicle : iVehicle) : void
+gas(int):void
+carHitsWall(vehicle : iVehicle) : boolean
+stopCar():void
+brake(int):void
+startEngine():void
+turnLeft():void
+turnRight():void
+
+class TimeListener{
++actionPerformed (e : ActionEvent) : void
+}
+
+@enduml

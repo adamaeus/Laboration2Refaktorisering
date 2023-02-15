@@ -11,14 +11,14 @@ public class Volvo240 extends Car {
 
 
     // GJORDE PRIVATE OCH LADE TILL EN NY GET ENGINE LÄNGS NED...
-    private Engine volvoEngine = new Engine(100);
+    private final Engine volvoEngine = new Engine(100);
 
 
     public Volvo240() {
         super("Volvo240", Color.BLACK, 4, 700);
     }
 
-    public final double trimFactor = 1.25;
+    private final double trimFactor = 1.25;
 
 
     @Override

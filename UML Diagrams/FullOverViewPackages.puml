@@ -1,0 +1,106 @@
+@startuml
+
+
+
+
+
+
+
+package Architecture {
+
+
+abstract class Car
+abstract class Truck
+
+}
+
+package GUI {
+
+CarController *-- CarView
+
+    class CarController{
+    class TimerListener
+
+    TimerListener <|-- ActionListener
+    }
+
+class CarView
+
+CarView *-- DrawPanel
+
+CarView *-- CarController
+
+CarView <|-- JFrame
+class DrawPanel
+
+DrawPanel <|-- JPanel
+
+
+
+
+}
+
+package Operations {
+class LoadingSystem
+class MovingSystem
+
+LoadingSystem *-- Deque
+MovingSystem *-- Directions
+
+
+
+    package Interfaces{
+
+    iVehicle <|-- Car
+    iVehicle <|-- Truck
+    CarController *-- iVehicle
+
+    class Directions
+    interface iVehicle
+    interface Loadable
+    interface Movable
+    Loadable <|-- LoadingSystem
+    Movable <|-- MovingSystem
+
+    }
+}
+
+package Vehicles{
+
+Truck <|-- CarTrailer
+Truck <|-- Scania
+Car <|-- Saab95
+Car <|-- Volvo240
+
+
+
+class CarTrailer
+class Saab95
+class Scania
+class Volvo240
+
+    package Components {
+
+    CarTrailer *-- TruckBed
+    Scania *-- TruckBed
+    CarTrailer *-- Engine
+    Scania *-- Engine
+    Volvo240 *-- Engine
+    Saab95 *-- Engine
+
+    Engine *-- MovingSystem
+
+    TruckBed *-- LoadingSystem
+    CarMechanic *-- LoadingSystem
+
+    class CarMechanic
+    class Engine
+    class TruckBed
+    }
+
+}
+
+
+
+
+@enduml

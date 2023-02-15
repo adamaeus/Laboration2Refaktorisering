@@ -1,0 +1,27 @@
+@startuml
+class TruckBed {
+- truckBedLoadingSystem : LoadingSystem<Car>
+- final bedType : String
+- final carryCapacity : double
+- final maxAngle : double
+- currentLoad : double
+- currentAngle : double
+
++ TruckBed(double, double, String)
++ getCarryCapacity() : double
++ getCurrentLoad() : double
++ getCurrentAngle() : double
++ getMaxAngle() : double
++ openRamp() : void
++ closeRamp() : void
++ setAngle(double) : void
++ load(Car) : void
+- loadHelper (Car) : boolean
+- loadCar(Car) : void
++ unload() : void
+- unLoadCar() : void
+
+}
+
+
+@enduml

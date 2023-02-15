@@ -11,9 +11,9 @@ public class CarTrailer extends Truck {
 
 
 
-    Engine trailerEngine = new Engine(350);
+    private final Engine trailerEngine = new Engine(350);
 
-    TruckBed trailerTruckBed = new TruckBed(2000, 1, "TrailerRamp");
+    private final TruckBed trailerTruckBed = new TruckBed(2000, 1, "TrailerRamp");
 
 
 

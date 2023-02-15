@@ -1,0 +1,10 @@
+@startuml
+class CarMechanic <Car> {
+maxAmountOfCars : int
+- final mechanicLoadingSystem : LoadingSystem<Car>
++ getAmountOfCarsInCarMechanic() : double
++ CarMechanic(int)
++ loadToMechanic(Car) : void
++ unLoad() : void
+}
+@enduml

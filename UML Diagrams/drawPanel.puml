@@ -1,0 +1,28 @@
+@startuml
+
+
+JPanel <|-- DrawPanel
+
+
+class DrawPanel{
+volvoImage: BufferedImage
+scaniaImage: BufferedImage
+saabImage: BufferedImage
+
+volvoPoint : Point
+scaniaPoint : Point
+saabPoint : Point
+
+- static witchCar : int
+
+----
+
+moveIt (x : int, y : int) : void
++ drawPanel (x : int, y : int)
+# paintComponent (g : Graphics) : void
+
+}
+
+
+
+@enduml

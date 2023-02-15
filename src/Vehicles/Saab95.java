@@ -9,10 +9,12 @@ import java.awt.*;
 public class Saab95 extends Car {
 
 
-    Engine saabEngine = new Engine(125);
+    private final Engine saabEngine = new Engine(125);
 
 
-    public boolean turboOn;
+
+
+    private boolean turboOn;
 
     public Saab95() {
         super("Saab95", Color.RED, 2, 500);

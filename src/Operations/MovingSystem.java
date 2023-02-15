@@ -5,7 +5,7 @@ import Operations.Interfaces.Movable;
 
 public class MovingSystem implements Movable {
 
-   public  Directions direction = Directions.RIGHT;
+     public Directions direction = Directions.RIGHT;
 
     private double x;
     private double y;

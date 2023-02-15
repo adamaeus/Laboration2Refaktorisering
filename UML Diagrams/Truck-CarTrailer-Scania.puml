@@ -1,0 +1,67 @@
+@startuml
+Truck <|--  CarTrailer
+Truck <|-- Scania
+
+class CarTrailer {
+- final trailerEngine : Engine
+- final trailerTruckBed : TruckBed
+---
++ getCurrentSpeed() : double
+# openRamp() : void
+# closeRamp() : void
+# load(Car) : void
+# unLoad() : void
+# move() : void
+# turnLeft() : void
+# turnRight() : void
+# gas() : void
+# brake() : void
+# speedFactor() : double
+}
+
+class Scania {
+Engine : scaniaEngine
+TruckBed : scaniaTruckBed
+---
+getCurrentSpeed() : double
+# openRamp() : void
+# closeRamp() : void
+# load(Car) : void
+# unLoad() : void
+# move() : void
+# turnLeft() : void
+# turnRight() : void
+# gas() : void
+# brake() : void
+# speedFactor() : double
+}
+
+class Truck{
+Truck(String,int,Color,double)
+---
+#truckMovingSystem:MovingSystem
++getMovingSystem():MovingSystem
+-modelName:String
+-nrDoors:int
+-Color:color
+-double:weight
+-currentSpeed:double
+---
++getModelName():String
++getNrDoors():int
++getColor():Color
++getWeight:double
++abstract getCurrentSpeed():double
+# openRamp() : void
+# closeRamp() : void
+# load(Car) : void
+# unLoad() : void
+# move() : void
+# turnLeft() : void
+# turnRight() : void
+# gas() : void
+# brake() : void
+# abstract speedFactor() : double
+
+}
+@enduml

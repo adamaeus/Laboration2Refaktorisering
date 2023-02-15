@@ -19,14 +19,8 @@ public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
-    // The controller member
     CarController vehicleC;
 
-    CarController saabC;
-
-    CarController scaniaC;
-
-    // KANSKE HÄR DET ÄR FEL FÖR Y AXIS OCH TURNLEFT/TURNRIGHT?
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
     JPanel controlPanel = new JPanel();
