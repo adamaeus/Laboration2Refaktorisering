@@ -32,8 +32,7 @@ public class DrawPanel extends JPanel{
     Point scaniaPoint = new Point();
 
 
-    // TODO: Make this genereal for all cars
-
+    // TODO: MOVE TO BUTTONWIDGET IN CONTROLLER
 
     private static int witchCar = 1;
 
@@ -66,6 +65,7 @@ public class DrawPanel extends JPanel{
 
 
 
+    // TODO: MOVE TO VIEW PACKAGE
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);

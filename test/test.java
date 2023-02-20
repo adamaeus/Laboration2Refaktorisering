@@ -1,5 +1,6 @@
 import Operations.Interfaces.Directions;
 import Vehicles.Components.Engine;
+import Vehicles.Scania;
 import Vehicles.Volvo240;
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +12,8 @@ public class test {
 
 
     Volvo240 volvo;
+
+    Scania scania;
     Directions direction;
 
 
@@ -18,6 +21,7 @@ public class test {
     @Before
     public void before(){
         volvo = new Volvo240();
+        scania = new Scania();
         direction = Directions.UP;
     }
     @After
@@ -62,6 +66,7 @@ public class test {
         volvo.getMovingSystem().move(volvo.getCurrentSpeed());
         assert (volvo.getMovingSystem().getX() < 0);
     }
+
 
 
 

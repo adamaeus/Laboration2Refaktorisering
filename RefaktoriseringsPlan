@@ -1,0 +1,41 @@
+
+REFAKTORISERINGSPLAN. GRUPP 7
+
+authors: Adam, Felix, Niklas
+
+
+**MODEL**
+- metod moveIt till MovingSystem.
+- carHitsWall bör ligga i MODEL, sedan får view bara lyssna på x respektive y ticks och visa dessa på skärmen.
+- TimerListener:
+- Denna klassen bör ligga i ett package (i samma package som MovingSystem, Directions, Movable),
+fördelaktigt ett package "MOVINGPACKAGE", i MODEL.
+Den har dock instanser av drawPanel i sig, som måste korrigeras,
+till avseende för hur model inte ska vara beroende av view.
+Dock får view gå in i model och hämta data/info.
+Kan lösas med ett interface methodListener(operator principle),
+som implemeteras av View. Även här ska repaint refaktorieras och "kallas" på annat ställe,
+antingen via ovanämnd interface "hämtning/listening" eller på annat sätt.
+moveit() kommer ligga tillsammans med model komponenter så den kan ligga kvar.
+
+Private Timer timer;
+Bör ligga i model, i en separat klass eller i någon större klass som fungerar som någon typ av "spelruntime / world update".
+
+
+**VIEW**
+
+
+**APPLICATION**
+void main ska ligga i applikation, här skapar vi vår lista och bilar?
+
+
+**CONTROLLER**
+- ButtonInputs från knapptryck, samt uppmålning av knapp panel.
+Klass som kallas typ buttonWidget.
+Både uppmålning av knapp panel via anrop till JPanel, samt knapp input från applikation (main) via en actionListener (tex).
+
+- Samtliga metod calls (tex gas, brake etc) är metoder som nu är definerade att delegera vidare informationen till den faktiska metoden som finns i vehicle Package (model),
+därför bör dessa metoder (delegeringsmetoderna) som finns i carController ligga med knappwidgeten,
+ då de inte utför någon logik utan endast skickar vidare styrsignalen.
+ Dessutom kan vi fortfarande aktivera turbo på saaben, utan dessa metoder, ännu argumenterar för att de har med controller beteende att göra.
+- samtliga knappar, deras utseende, själva knappen, och knappens styrsignaldelegering ska ligga i "ButtonWidget"

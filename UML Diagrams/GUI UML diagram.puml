@@ -1,0 +1,89 @@
+@startuml
+
+
+CarController *-- CarView
+ActionListener <|-- TimeListener
+CarView *-- DrawPanel
+CarView *-- CarController
+
+class CarController {
+-final delay: int
+-timer:Timer
+-frame:CarView
+cars:ArrayList<Cars>
+brakeAndTurnAround(vehicle : iVehicle) : void
+gas(int):void
+carHitsWall(vehicle : iVehicle) : boolean
+stopCar():void
+brake(int):void
+startEngine():void
+turnLeft():void
+turnRight():void
+
+class TimeListener{
++actionPerformed (e : ActionEvent) : void
+}
+
+
+
+
+JPanel <|-- DrawPanel
+
+
+class DrawPanel{
+volvoImage: BufferedImage
+scaniaImage: BufferedImage
+saabImage: BufferedImage
+
+volvoPoint : Point
+scaniaPoint : Point
+saabPoint : Point
+
+- static witchCar : int
+
+----
+
+moveIt (x : int, y : int) : void
++ drawPanel (x : int, y : int)
+# paintComponent (g : Graphics) : void
+
+}
+
+
+JFrame <|-- CarView
+
+
+class CarView{
+- static final X : int
+- static final Y : int
+
+gasAmount : int
+brakeAmount : int
+
+vehicleC : CarController
+drawPanel : DrawPanel
+controlPanel : JPanel
+gasPanel : JPanel
+gasSpinner : JSpinner
+brakeSpinner : JSpinner
+
+gasLabel : JLabel
+gasButton : JButton
+brakeButton : JButton
+turboOnButton : JButton
+turboOffButton : JButton
+liftBedButton : JButton
+lowerBedButton : JButton
+startButton : JButton
+stopButton : JButton
+turnLeftButton : JButton
+turnRightButton : JButton
+----
++ CarView (framename : String, cc : CarController)
+- initComponents (title : String) : void
++ getDrawPanelXCoordinate () : int
++ getDrawPanelYCoordinate () : int
+
+
+}
+@enduml

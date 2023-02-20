@@ -50,9 +50,6 @@ public class CarController {
         cc.timer.start();
 
 
-
-
-
         cc.vehicles.add(new Volvo240());
         cc.vehicles.add(new Saab95());
         cc.vehicles.add(new Scania());
@@ -73,6 +70,9 @@ public class CarController {
 
     //getPosition() , vet inte om användbar eller ej
     private class TimerListener implements ActionListener {
+
+
+
         public void actionPerformed(ActionEvent e) {
             for (iVehicle vehicle : vehicles) {
                 if(carHitsWall(vehicle))
@@ -90,6 +90,9 @@ public class CarController {
                 frame.drawPanel.repaint();
             }
             }
+
+
+
         }
 
 
@@ -138,6 +141,8 @@ public class CarController {
         return (carHitsFloor || carHitsRightWall || carHitsRoof || carHitsLeftWall);
     }
 
+
+    // TODO : SAMTLIGA BÖR LIGGA MED BUTTONWIDGET
 
     // NYTT. 23:00 10 feb.
     void brake(int amount) {

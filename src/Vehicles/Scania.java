@@ -60,15 +60,15 @@ public class Scania extends Truck {
     }
 
 
-    @Override
-    protected void load(Car car) {
+    //@Override
+    public void load(Car car) {
         if(scaniaEngine.getCurrentSpeed() == 0){
             scaniaTruckBed.load(car);
         }
     }
 
 
-    @Override
+
     protected void unLoad() {
         if (scaniaEngine.getCurrentSpeed() == 0) {
             scaniaTruckBed.unload();

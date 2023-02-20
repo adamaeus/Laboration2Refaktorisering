@@ -19,9 +19,6 @@ public abstract class Truck implements iVehicle {
 
     }
 
-    public MovingSystem getTruckMovingSystem (){
-        return truckMovingSystem;
-    }
     protected MovingSystem truckMovingSystem = new MovingSystem();
 
 
@@ -50,9 +47,9 @@ public abstract class Truck implements iVehicle {
 
     protected abstract void closeRamp();
 
-    protected abstract void load(Car car);
+   // protected abstract void load(Car car);
 
-    protected abstract void unLoad();
+    // protected abstract void unLoad();
 
     protected abstract void move();
 

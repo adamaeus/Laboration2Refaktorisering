@@ -46,14 +46,14 @@ public class CarTrailer extends Truck {
 
 
 
-    @Override
-    protected void load(Car car) {
+   // @Override
+   public void load(Car car) {
         if (trailerEngine.getCurrentSpeed() == 0) {
             trailerTruckBed.load(car);
         }
     }
 
-    @Override
+
     protected void unLoad() {
         if (trailerEngine.getCurrentSpeed() == 0){
             trailerTruckBed.unload();

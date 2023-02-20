@@ -23,6 +23,9 @@ public class CarView extends JFrame{
 
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
+
+    //TODO : CONTROLLER
+
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
@@ -63,6 +66,11 @@ public class CarView extends JFrame{
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
+
+
+
+    //TODO CAR CONTROLLER (BUTTON WIDGET)
+
     private void initComponents(String title) {
 
         this.setTitle(title);

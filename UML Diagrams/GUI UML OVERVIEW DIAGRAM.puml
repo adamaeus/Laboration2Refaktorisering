@@ -1,9 +1,26 @@
 @startuml
 
 
+package GUI {
+
+
+    class CarController{
+    class TimerListener
+
+    TimerListener <|-- ActionListener
+    }
 
 
 
+}
+
+package model {
+package Operations {
+class LoadingSystem
+class MovingSystem
+
+LoadingSystem *-- Deque
+MovingSystem *-- Directions
 
 
 package Architecture {
@@ -14,46 +31,13 @@ abstract class Truck
 
 }
 
-package GUI {
-
-CarController *-- CarView
-
-    class CarController{
-    class TimerListener
-
-    TimerListener <|-- ActionListener
-    }
-
-class CarView
-
-CarView *-- DrawPanel
-
-CarView *-- CarController
-
-CarView <|-- JFrame
-class DrawPanel
-
-DrawPanel <|-- JPanel
-
-
-
-
-}
-
-package Operations {
-class LoadingSystem
-class MovingSystem
-
-LoadingSystem *-- Deque
-MovingSystem *-- Directions
-
-
 
     package Interfaces{
 
     iVehicle <|-- Car
     iVehicle <|-- Truck
-    CarController *-- iVehicle
+
+    viewpanel *-- model
 
     Enum Directions
     interface iVehicle
@@ -100,7 +84,22 @@ class Volvo240
 
 }
 
+class model
+CarController *-- model
+
+}
+class viewpanel
 
 
+package view {
+viewpanel *-- CarView
+CarView <|-- JFrame
+CarView *-- DrawPanel
+
+DrawPanel <|-- JPanel
+class CarView
+class DrawPanel
+
+}
 
 @enduml
