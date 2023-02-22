@@ -40,12 +40,6 @@ public class TimerListener implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        //iVehicle vehicles = getVehicleList()
-
-        vehicles.add(volvo);
-        vehicles.add(saab95);
-        vehicles.add(scania);
-
         for (iVehicle vehicle : vehicles) {
             if(carHitsWall(vehicle))
             {

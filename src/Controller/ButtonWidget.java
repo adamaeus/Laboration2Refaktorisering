@@ -7,6 +7,7 @@ import javax.swing.event.ChangeListener;
 
 import Model.MovingPackage.TimerListener;
 import Model.Vehicle.iVehicle;
+import View2d.View;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,10 +19,11 @@ import java.util.ArrayList;
 public class ButtonWidget extends JFrame {
 
 
-    private static final int X = 800;
-    private static final int Y = 800;
+
 
     Controller vehicleC;
+
+
 
     JPanel controlPanel = new JPanel();
     JPanel gasPanel = new JPanel();
@@ -36,8 +38,8 @@ public class ButtonWidget extends JFrame {
 
 
 
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+
+
 
 
 
@@ -62,6 +64,7 @@ public class ButtonWidget extends JFrame {
 
     private void createButtons() {
         createTurboButton();
+        createTurboOffButton();
         createTurnRightButton();
         createTurnLeftButton();
         createStartEngineButton();
@@ -70,6 +73,22 @@ public class ButtonWidget extends JFrame {
         createBrakeSpinner();
         createBrakeButton();
     }
+
+
+
+    private void createControlPanelini(String title) {
+        controlPanel.setLayout(new GridLayout(2, 4));
+        controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
+        this.add(controlPanel);
+        controlPanel.setBackground(Color.CYAN);
+        createButtons();
+        this.setTitle(title);
+        this.setPreferredSize(new Dimension(X, Y));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+
+    }
+
+
 
     private void createTurboOffButton(){
         JButton turboOffButton = new JButton("Saab Turbo off");
@@ -83,8 +102,6 @@ public class ButtonWidget extends JFrame {
 
     }
 
-
-
     private void createBrakeButton(){
         JButton brakeButton = new JButton("Brake");
         controlPanel.add(brakeButton, 4);
@@ -97,12 +114,16 @@ public class ButtonWidget extends JFrame {
 
     }
 
-    private void createControlPanel() {
-        controlPanel.setLayout(new GridLayout(2, 4));
-        controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
-        this.add(controlPanel);
-        controlPanel.setBackground(Color.CYAN);
+    View view;
+    private void actionPerformedInController(){
+        view.createStopEngineButton(stopButton.addActionListener((ActionListener) e -> stopEngine());
     }
+
+    private void actionPerformedStartEngine(){
+        view.createStartEngineButton(startButton.addActionListener((ActionListener) e -> stopEngine());
+    }
+
+
 
 
 
@@ -219,58 +240,29 @@ public class ButtonWidget extends JFrame {
 
 
 
-
-
-    private void initComponents(String title) {
-
-        this.setTitle(title);
-        this.setPreferredSize(new Dimension(X, Y));
-        this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+    private void createLiftBedButton() {
+        JButton liftBedButton = new JButton("Scania Lift Bed");
 
         controlPanel.add(liftBedButton, 5);
-        controlPanel.add(lowerBedButton, 6);
-
-
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vehicleC.liftBedButton();
             }
         });
+    }
 
+    private void createLowerBedButton() {
+        JButton lowerBedButton = new JButton("Lower Lift Bed");
 
+        controlPanel.add(lowerBedButton, 6);
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vehicleC.lowerBedButton();
             }
         });
-
-
-        // Make the frame pack all it's components by respecting the sizes if possible.
-        this.pack();
-
-        // Get the computer screen resolution
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        // Center the frame
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        // Make the frame visible
-        this.setVisible(true);
-        // Make sure the frame exits when "x" is pressed
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
-        /*
-        public int getDrawPanelXCoordinate () {
-            return X;
-        }
-
-        public int getDrawPanelYCoordinate () {
-            return (Y - 240);
-        }
-
-         */
-
     }
+
+
 }

@@ -10,9 +10,10 @@ public class main {
     public static void main (String [] args){
 
 
-        //Controller cc = new Controller();
+        Controller cc = new Controller();
 
 
+        cc.startEngine();
         // Start a new view and send a reference of self
         frame = new CarView("CarSim 1.0", cc);
 
