@@ -1,4 +1,4 @@
-package GUI;
+package oldStuff;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -14,17 +14,13 @@ import java.awt.event.ActionListener;
  * each of it's components.
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
-
+/*
 public class CarView extends JFrame{
-    private static final int X = 800;
-    private static final int Y = 800;
-
-    CarController vehicleC;
-
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
 
-    //TODO : CONTROLLER
+
+
 
     JPanel controlPanel = new JPanel();
 
@@ -228,6 +224,8 @@ public class CarView extends JFrame{
 
 
 
+
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
@@ -249,3 +247,5 @@ public class CarView extends JFrame{
         return (Y-240);
     }
 }
+
+ */

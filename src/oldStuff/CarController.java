@@ -1,16 +1,12 @@
-package GUI;
+package oldStuff;
 
 
-import Architechture.Car;
-import Architechture.Truck;
-import Operations.Interfaces.iVehicle;
-import Operations.MovingSystem;
-import Vehicles.Saab95;
-import Vehicles.Scania;
-import Vehicles.Volvo240;
+import Model.Vehicle.iVehicle;
+import Model.Vehicle.Saab95;
+import Model.Vehicle.Scania;
+import Model.Vehicle.Volvo240;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -23,15 +19,17 @@ import static java.lang.System.out;
 * * modifying the model state and the updating the view.
  */
 
+
+
+
+/*
+
 public class CarController {
 
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+
 
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
@@ -40,19 +38,7 @@ public class CarController {
 
     public static void main(String[] args) {
         // Instance of this class
-        CarController cc = new CarController();
 
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
-
-
-        cc.vehicles.add(new Volvo240());
-        cc.vehicles.add(new Saab95());
-        cc.vehicles.add(new Scania());
 
 
 
@@ -67,7 +53,7 @@ public class CarController {
     * view to update its images. Change this method to your needs.
     * */
 
-
+/*
     //getPosition() , vet inte om användbar eller ej
     private class TimerListener implements ActionListener {
 
@@ -215,5 +201,8 @@ public class CarController {
     }
 }
 
+
+
+*/
 
 

@@ -1,6 +1,4 @@
-package Operations;
-
-import Operations.Interfaces.Loadable;
+package Model.LoadingPackage;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

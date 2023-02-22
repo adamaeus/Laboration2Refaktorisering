@@ -1,4 +1,4 @@
-package Operations.Interfaces;
+package Model.LoadingPackage;
 
 public interface Loadable<T> {
 

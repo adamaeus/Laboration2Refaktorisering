@@ -1,10 +1,5 @@
-package Vehicles;
+package Model.Vehicle;
 
-import Architechture.Car;
-import Architechture.Truck;
-import Operations.MovingSystem;
-import Vehicles.Components.Engine;
-import Vehicles.Components.TruckBed;
 import Vehicles.Components.TruckBed;
 
 import java.awt.*;

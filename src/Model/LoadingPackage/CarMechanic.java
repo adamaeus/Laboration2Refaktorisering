@@ -1,7 +1,4 @@
-package Vehicles.Components;
-
-import Operations.LoadingSystem;
-
+package Model.LoadingPackage;
 
 
 public class CarMechanic<Car> {

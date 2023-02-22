@@ -1,7 +1,6 @@
-package Operations.Interfaces;
+package Model.Vehicle;
 
-import Operations.MovingSystem;
-import Vehicles.Components.Engine;
+import Model.MovingPackage.MovingSystem;
 
 public interface iVehicle {
 

@@ -1,7 +1,6 @@
-import Operations.Interfaces.Directions;
-import Vehicles.Components.Engine;
-import Vehicles.Scania;
-import Vehicles.Volvo240;
+import Model.MovingPackage.Directions;
+import Model.Vehicle.Scania;
+import Model.Vehicle.Volvo240;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

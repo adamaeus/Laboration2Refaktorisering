@@ -1,4 +1,4 @@
-package Operations.Interfaces;
+package Model.MovingPackage;
 
 public interface Movable {
 

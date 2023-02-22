@@ -1,9 +1,6 @@
-package Architechture;
+package Model.Vehicle;
 
-import Operations.Interfaces.iVehicle;
-import Operations.MovingSystem;
-import Vehicles.Components.Engine;
-import Vehicles.Volvo240;
+import Model.MovingPackage.MovingSystem;
 
 import java.awt.*;
 

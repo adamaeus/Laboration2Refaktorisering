@@ -1,7 +1,7 @@
 package Vehicles.Components;
 
-import Architechture.Car;
-import Operations.LoadingSystem;
+import Model.Vehicle.Car;
+import Model.LoadingPackage.LoadingSystem;
 
 
 public class TruckBed {

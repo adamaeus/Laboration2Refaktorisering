@@ -1,8 +1,6 @@
-package Architechture;
+package Model.Vehicle;
 
-import Operations.Interfaces.iVehicle;
-import Operations.MovingSystem;
-import Vehicles.Components.Engine;
+import Model.MovingPackage.MovingSystem;
 
 import java.awt.*;
 

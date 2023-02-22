@@ -1,8 +1,7 @@
 package Animals;
 
-import Architechture.Animal;
-import Operations.LoadingSystem;
-import Operations.MovingSystem;
+import Model.LoadingPackage.LoadingSystem;
+import Model.MovingPackage.MovingSystem;
 
 import java.awt.*;
 

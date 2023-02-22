@@ -1,7 +1,4 @@
-package Operations;
-
-import Operations.Interfaces.Directions;
-import Operations.Interfaces.Movable;
+package Model.MovingPackage;
 
 public class MovingSystem implements Movable {
 

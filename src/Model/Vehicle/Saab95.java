@@ -1,8 +1,4 @@
-package Vehicles;
-
-import Architechture.Car;
-import Operations.MovingSystem;
-import Vehicles.Components.Engine;
+package Model.Vehicle;
 
 import java.awt.*;
 

@@ -1,8 +1,5 @@
-package Vehicles;
+package Model.Vehicle;
 
-import Architechture.Car;
-import Architechture.Truck;
-import Vehicles.Components.Engine;
 import Vehicles.Components.TruckBed;
 
 import java.awt.*;

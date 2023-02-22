@@ -1,4 +1,4 @@
-package Architechture;
+package Animals;
 
 public abstract class Animal {
     public abstract void move();

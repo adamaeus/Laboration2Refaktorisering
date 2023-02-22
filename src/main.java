@@ -1,7 +1,8 @@
-import Architechture.Car;
-import Vehicles.CarTrailer;
-import Vehicles.Saab95;
-import Vehicles.Scania;
+import Controller.Controller;
+import Model.Vehicle.CarTrailer;
+import Model.Vehicle.Saab95;
+import Model.Vehicle.Scania;
+import Model.Vehicle.Volvo240;
 
 public class main {
 
@@ -9,16 +10,16 @@ public class main {
     public static void main (String [] args){
 
 
-        Scania scania = new Scania();
-
-        CarTrailer carTrailer = new CarTrailer();
+        //Controller cc = new Controller();
 
 
+        // Start a new view and send a reference of self
+        frame = new CarView("CarSim 1.0", cc);
 
-        scania.load(new Saab95());
+        // Start the timer
+        timer.start();
 
-        carTrailer.load(new Saab95());
 
-        scania.load(new Saab95());
+
     }
 }
