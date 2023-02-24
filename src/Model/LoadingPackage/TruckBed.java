@@ -1,4 +1,4 @@
-package Vehicles.Components;
+package Model.LoadingPackage;
 
 import Model.Vehicle.Car;
 import Model.LoadingPackage.LoadingSystem;

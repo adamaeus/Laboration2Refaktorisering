@@ -1,6 +1,6 @@
 package Model.Vehicle;
 
-import Vehicles.Components.TruckBed;
+import Model.LoadingPackage.TruckBed;
 
 import java.awt.*;
 

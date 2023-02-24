@@ -1,6 +1,5 @@
 package Model.MovingPackage;
 
-import Controller.ButtonWidget;
 import Controller.Controller;
 import Model.Vehicle.Saab95;
 import Model.Vehicle.Scania;
@@ -11,8 +10,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import static java.lang.System.out;
 
 public class TimerListener implements ActionListener {
 

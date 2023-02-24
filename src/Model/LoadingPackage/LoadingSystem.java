@@ -6,6 +6,12 @@ import java.util.Deque;
 public class LoadingSystem <T> implements Loadable <T> {
 
 
+
+    private final int open = 1;
+    private final int closed = 0;
+
+
+
     private Deque<T> loadedDeque = new ArrayDeque<>();
 
     @Override
@@ -33,4 +39,12 @@ public class LoadingSystem <T> implements Loadable <T> {
     public String showStack() {
         return loadedDeque.toString();
     }
+
+   protected int openLoadingSystem() {
+        return open;
+    }
+   protected int closeLoadingSystem() {
+        return closed;
+    }
+
 }
