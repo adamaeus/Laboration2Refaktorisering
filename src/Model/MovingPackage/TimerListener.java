@@ -19,7 +19,7 @@ public class TimerListener implements ActionListener {
     private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new CarController.TimerListener());
+    private Timer timer = new Timer(delay, new Controller.TimerListener());
 
 
     private ArrayList <iVehicle> vehicles = new ArrayList<>();

@@ -1,0 +1,37 @@
+SKAPA KONSTRUKTOR I BUTTONWIDGET (ELLER BUTTONVIEW, VILKEN KLASS DET ÄR SOM SKAPAR BUTTONS) OCH DENNA KONSTRUKTORN
+GÖR ATT VI VID INSTANSIERINGEN AV EN VIEW I MAIN INTE BEHÖVER KALLA PÅ EN METOD SOM SKAPAR EN KONTROLPANEL UTAN KAN
+BARA SKAPA EN NY VIEW OCH FÅR KNAPPARNA ANGIVNA I KLASSEN:
+
+
+
+public class ButtonWidget extends JFrame {
+
+    private static final int X = 800;
+    private static final int Y = 800;
+
+    private JPanel controlPanel = new JPanel();
+    private JPanel gasPanel = new JPanel();
+
+    public ButtonWidget(String title) {
+        createControlPanel(title);
+        // Add any other components you want to the frame here
+        // ...
+        this.pack();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+    }
+
+    private void createControlPanel(String title) {
+        controlPanel.setLayout(new GridLayout(2, 4));
+        controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
+        this.add(controlPanel);
+        controlPanel.setBackground(Color.CYAN);
+        createButtons();
+        this.setTitle(title);
+        this.setPreferredSize(new Dimension(X, Y));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+    }
+
+    // Other methods and fields here
+}

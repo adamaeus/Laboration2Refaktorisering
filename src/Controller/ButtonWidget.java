@@ -114,18 +114,6 @@ public class ButtonWidget extends JFrame {
 
     }
 
-    View view;
-    private void actionPerformedInController(){
-        view.createStopEngineButton(stopButton.addActionListener((ActionListener) e -> stopEngine());
-    }
-
-    private void actionPerformedStartEngine(){
-        view.createStartEngineButton(startButton.addActionListener((ActionListener) e -> stopEngine());
-    }
-
-
-
-
 
     private void createStopEngineButton() {
         JButton stopButton = new JButton("Stop all cars");

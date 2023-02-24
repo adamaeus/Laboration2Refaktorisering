@@ -33,11 +33,12 @@ public class View extends JFrame{
 
 
 
-    public void createStopEngineButton(ActionListener actionListener) {
+    public void createStopEngineButton(ActionListener e) {
         JButton stopButton = new JButton("Stop all cars");
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
+        stopButton.addActionListener(e);
 
 }
 
