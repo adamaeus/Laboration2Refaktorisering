@@ -81,7 +81,7 @@ public class TruckBed {
     */
 
     public void closeRamp(){
-
+        setAngle(0);
     }
 
     //-------------------LOAD METHODS-------------------\\
@@ -111,7 +111,7 @@ public class TruckBed {
 
 
     public void openRamp() {
-        openRamp();
+        setAngle(1);
     }
 }
 

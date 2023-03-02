@@ -14,6 +14,7 @@ public class Mediator{
         this.vehicleC = vehicleC;
         this.view = controlPanel;
         bindStartEngineButton();
+        bindStopEngineButton();
         bindTurnRightButton();
         bindTurnLeftButton();
         bindAddCarButton();
@@ -22,7 +23,8 @@ public class Mediator{
         bindGasSpinnerButton();
         bindBrakeButton();
         bindBrakeSpinnerButton();
-        bindStopEngineButton();
+        bindTurboOnButton();
+        bindTurboOffButton();
     }
 
     public void bindStartEngineButton() {

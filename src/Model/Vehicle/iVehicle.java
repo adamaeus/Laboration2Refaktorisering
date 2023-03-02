@@ -1,9 +1,10 @@
 package Model.Vehicle;
 
 import Model.MovingPackage.MovingSystem;
-import View2d.Drawable;
 
 public interface iVehicle {
+
+    iVehicle create();
 
     MovingSystem getMovingSystem();
 
@@ -13,7 +14,7 @@ public interface iVehicle {
 
     void brake(double amount);
 
-   void gas(double amount);
+    void gas(double amount);
 
     // interface for "generalising" a vehicle type.
 

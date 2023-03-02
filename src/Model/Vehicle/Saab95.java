@@ -49,6 +49,11 @@ public class Saab95 extends Car {
     }
 
     @Override
+    public iVehicle create() {
+        return this;
+    }
+
+    @Override
     public double getCurrentSpeed() {
         return saabEngine.getCurrentSpeed();
     }
@@ -65,7 +70,7 @@ public class Saab95 extends Car {
 
     @Override
     public void brake(double amount) {
-        saabEngine.brake(amount, speedFactor());
+        saabEngine.brake(0.5, speedFactor());
     }
 
     @Override

@@ -20,6 +20,11 @@ public class CarTrailer extends Truck {
 
 
     @Override
+    public iVehicle create() {
+        return this;
+    }
+
+    @Override
     public double getCurrentSpeed() {
         return trailerEngine.getCurrentSpeed();
     }

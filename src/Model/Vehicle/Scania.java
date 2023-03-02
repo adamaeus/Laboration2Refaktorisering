@@ -28,6 +28,12 @@ public class Scania extends Truck {
     }
     */
 
+
+    @Override
+    public iVehicle create() {
+        return this;
+    }
+
     @Override
     public double getCurrentSpeed() {
         return scaniaEngine.getCurrentSpeed();
@@ -94,7 +100,7 @@ public class Scania extends Truck {
     // NYTT 22:30 10 feb (gjorde public)
     @Override
     public void brake(double amount) {
-        scaniaEngine.brake(1.0, speedFactor());
+        scaniaEngine.brake(0.5, speedFactor());
     }
 
     @Override

@@ -17,6 +17,11 @@ public class Volvo240 extends Car {
 
 
     @Override
+    public iVehicle create() {
+        return this;
+    }
+
+    @Override
     public void move() {
         carMovingSystem.move(volvoEngine.getCurrentSpeed());
     }
@@ -28,7 +33,7 @@ public class Volvo240 extends Car {
 
     @Override
     public void brake(double amount) {
-        volvoEngine.brake(amount, speedFactor());
+        volvoEngine.brake(0.5, speedFactor());
     }
 
     @Override

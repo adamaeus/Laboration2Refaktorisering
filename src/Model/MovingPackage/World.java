@@ -16,6 +16,10 @@ import static java.lang.System.out;
 public class World {
 
 
+
+    VehicleFactory vehicleFactory = new VehicleFactory();
+
+
     private final Timer timer;
     public World(){
         this.timer = new Timer(delay,new TimerListener());
@@ -109,27 +113,36 @@ public class World {
             Random rand = new Random();
             int boundRand = rand.nextInt(2);
             int position = vehicles.size() * 100;
-            
-            switch (boundRand) {
-                case 1:
-                    Volvo240 volvo240 = new Volvo240();
-                    vehicles.add(volvo240);
-                    volvo240.getMovingSystem().setY(position);
-                    break;
-                case 2:
-                    Saab95 saab95 = new Saab95();
-                    vehicles.add(new Saab95());
-                    saab95.getMovingSystem().setY(position);
-                    break;
-                case 3:
-                    Scania scania = new Scania();
-                    vehicles.add(new Scania());
-                    scania.getMovingSystem().setY(position);
-                    break;
-            }
+            iVehicle vehicle = vehicleFactory.createRandomVehicle();
+            vehicles.add(vehicle);
+            vehicle.getMovingSystem().setY(position);
             notifyObservers();
         }
     }
+
+    /*
+          /*
+            switch (boundRand) {
+                case 1 -> {
+                   iVehicle volvo240 = vehicleFactory.createVolvo();
+                    vehicles.add(volvo240);
+                    volvo240.getMovingSystem().setY(position);
+                }
+                case 2 -> {
+                    iVehicle saab95 = vehicleFactory.createSaab();
+                    vehicles.add(saab95);
+                    saab95.getMovingSystem().setY(position);
+                }
+                case 3 -> {
+                    iVehicle scania = vehicleFactory.createScania();
+                    vehicles.add(scania);
+                    scania.getMovingSystem().setY(position);
+                }
+            }
+            notifyObservers();
+        }
+
+             */
 
         public void removeCars () {
             if (vehicles.size() > 0) {

@@ -40,6 +40,13 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
 
     JButton removeCarButton;
 
+    JPanel gasPanel = new JPanel();
+
+    // spinners
+
+    JSpinner gasSpinner;
+
+    JSpinner brakeSpinner;
 
 
 
@@ -47,7 +54,7 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
     private static final int Y = 800;
 
     public ControlPanel() {
-        setLayout(new GridLayout(2, 4));
+        setLayout(new GridLayout(2, 5));
         setPreferredSize(new Dimension((X / 2) + 4, 200));
         setBackground(Color.CYAN);
         setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -67,6 +74,14 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
         add(gasPanel);
         createBrakeButton();
         add(brakeButton);
+        createTurboOnButton();
+        add(turboOnButton);
+        createTurboOffButton();
+        add(turboOffButton);
+        createTruckBedLiftButton();
+        add(liftBedButton);
+        createTruckBedLowerButton();
+        add(lowerBedButton);
 
     }
 
@@ -79,9 +94,6 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
         startEngineButton.setPreferredSize(new Dimension(X / 7 - 15, 100));
         startEngineButton.setBackground(Color.blue);
     }
-
-
-
     private void createStopEngineButton() {
         stopEngineButton = new JButton("Stop all cars");
         stopEngineButton.setBackground(Color.red);
@@ -90,17 +102,14 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
     }
 
 
+
     private void createTurnLeftButton() {
         turnLeftButton = new JButton("Turn Right");
         turnLeftButton.setPreferredSize(new Dimension(X / 7 - 15, 100));
     }
-
-
     private void createTurnRightButton() {
         turnRightButton = new JButton("Turn left");
         turnRightButton.setPreferredSize(new Dimension(X / 7 - 15, 100));
-
-
     }
 
 
@@ -108,7 +117,6 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
         gasButton = new JButton("Gas");
         gasButton.setPreferredSize(new Dimension(X / 7 - 15, 100));
     }
-
     private void createGasPanelButton(){
         createGasSpinner();
         createGasButton();
@@ -142,10 +150,7 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
     private void createTurboOnButton() {
         turboOnButton = new JButton("Saab Turbo on");
         turboOnButton.setPreferredSize(new Dimension(X / 7 - 15, 100));
-
     }
-
-
     private void createTurboOffButton() {
         turboOffButton = new JButton("Saab Turbo off");
         turboOffButton.setPreferredSize(new Dimension(X / 7 - 15, 100));
@@ -161,9 +166,6 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
     private void createBrakeSpinner() {
         brakeSpinner = new JSpinner(createSpinners());
     }
-
-    JPanel gasPanel = new JPanel();
-
 
     private void createAddCarButton(){
         addCarButton = new JButton("Add car");
@@ -191,8 +193,6 @@ public class ControlPanel extends JPanel implements ButtonViewInterface {
     public JButton getRemoveCarButton(){
         return removeCarButton;
     }
-
-
     public JButton getAddCarButton(){
         return addCarButton;
     }
