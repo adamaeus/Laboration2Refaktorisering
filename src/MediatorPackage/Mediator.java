@@ -1,61 +1,84 @@
 package MediatorPackage;
 
-public class Mediator {
+import javax.swing.*;
+import java.awt.event.ActionListener;
+
+public class Mediator{
 
 
-    private final ButtonViewInterface view;
-    private final ControllerInterface vehicleC;
+    private final ButtonViewInterface view; // COntrolpanel
+    private final ControllerInterface vehicleC;  // controller
 
-    public Mediator (ControllerInterface vehicleC, ButtonViewInterface view){
+
+    public Mediator (ControllerInterface vehicleC, ButtonViewInterface controlPanel){
         this.vehicleC = vehicleC;
-        this.view = view;
+        this.view = controlPanel;
+        bindStartEngineButton();
+        bindTurnRightButton();
+        bindTurnLeftButton();
+        bindAddCarButton();
+        bindRemoveCarButton();
+        bindGasButton();
+        bindGasSpinnerButton();
+        bindBrakeButton();
+        bindBrakeSpinnerButton();
+        bindStopEngineButton();
     }
 
-
-
-
     public void bindStartEngineButton() {
-        view.createStartEngineButton(vehicleC.createStartEngineActionListener());
+        view.getStartEngineButton().addActionListener(vehicleC.createStartEngineActionListener());
     }
 
     public void bindStopEngineButton(){
-        view.createStopEngineButton(vehicleC.createStopEngineActionListener());
+        view.getStopEngineButton().addActionListener(vehicleC.createStopEngineActionListener());
     }
 
     public void bindTurnLeftButton(){
-        view.createTurnLeftButton(vehicleC.createTurnLeftActionListener());
+        view.getTurnLeftButton().addActionListener(vehicleC.createTurnLeftActionListener());
     }
 
     public void bindTurnRightButton(){
-        view.createTurnRightButton(vehicleC.createTurnRightActionListener());
+        view.getTurnRightButton().addActionListener(vehicleC.createTurnRightActionListener());
     }
 
     public void bindTurboOnButton(){
-        view.createTurboOnButton(vehicleC.createTurnTurboOnActionListener());
+        view.getTurboOnButton().addActionListener(vehicleC.createTurnTurboOnActionListener());
     }
 
     public void bindTurboOffButton(){
-        view.createTurboOffButton(vehicleC.createTurnTurboOffActionListener());
+        view.getTurboOffButton().addActionListener(vehicleC.createTurnTurboOffActionListener());
     }
 
     public void bindGasButton(){
-        view.createGasButton(vehicleC.createGasActionListener());
+        view.getGasButton().addActionListener(vehicleC.createGasActionListener());
     }
 
     public void bindBrakeButton(){
-        view.createBrakeButton(vehicleC.createBrakeActionListener());
+        view.getBrakeButton().addActionListener(vehicleC.createBrakeActionListener());
     }
 
     public void bindLowerTruckBedButton(){
-        view.createTruckBedLowerButton(vehicleC.createTruckBedLowerActionListener());
+        view.getLowerBedButton().addActionListener(vehicleC.createTruckBedLowerActionListener());
     }
 
     public void bindLiftTruckBedButton(){
-        view.createTruckBedLiftButton(vehicleC.createTruckBedLiftActionListener());
+        view.getLiftBedButton().addActionListener(vehicleC.createTruckBedLiftActionListener());
     }
 
     public void bindGasSpinnerButton(){
-        view.createGasSpinner(vehicleC.createGasSpinnerActionListener());
+        view.getGasSpinner().addChangeListener(vehicleC.createGasSpinnerActionListener());
+    }
+
+    public void bindBrakeSpinnerButton(){
+        view.getBrakeSpinner().addChangeListener(vehicleC.createBrakeSpinnerACtionListener());
+    }
+
+    public void bindAddCarButton(){
+        view.getAddCarButton().addActionListener(vehicleC.createAddCarButton());
+    }
+
+    public void bindRemoveCarButton(){
+        view.getRemoveCarButton().addActionListener(vehicleC.createRemoveCarButton());
     }
 }
 

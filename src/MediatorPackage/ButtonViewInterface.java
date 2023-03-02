@@ -7,27 +7,34 @@ import java.awt.event.ActionListener;
 public interface ButtonViewInterface {
 
 
-    void createStartEngineButton(ActionListener actionListener);
 
-    void createStopEngineButton(ActionListener actionListener);
 
-    void createTurnLeftButton(ActionListener actionListener);
 
-    void createTurnRightButton(ActionListener actionListener);
+    JButton getStartEngineButton();
 
-    void createTurboOnButton(ActionListener actionListener);
 
-    void createTurboOffButton(ActionListener actionListener);
+    JButton getStopEngineButton();
 
-    void createGasButton(ActionListener actionListener);
+    JButton getTurnLeftButton();
 
-    void createBrakeButton(ActionListener actionListener);
+    JButton getTurnRightButton();
 
-    void createTruckBedLiftButton(ActionListener actionListener);
 
-    void createTruckBedLowerButton(ActionListener actionListener);
+    JButton getTurboOnButton();
 
-    void createGasSpinner(ChangeListener changeListener);
+
+    JButton getTurboOffButton();
+
+
+    JButton getGasButton();
+
+    JButton getBrakeButton();
+
+
+    JButton getLiftBedButton();
+
+    JButton getLowerBedButton();
+
 
     void createBrakeSpinner( ChangeListener changeListener);
 }

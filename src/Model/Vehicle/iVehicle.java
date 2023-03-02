@@ -1,6 +1,7 @@
 package Model.Vehicle;
 
 import Model.MovingPackage.MovingSystem;
+import View2d.Drawable;
 
 public interface iVehicle {
 

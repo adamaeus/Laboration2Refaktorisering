@@ -22,8 +22,11 @@ public class Engine {
 
 
 
-    public void startEngine(){
-        currentSpeed = 0.1;
+    public void startEngine() {
+        if (currentSpeed < 0.1) {
+            currentSpeed = 0.1;
+            System.out.println(currentSpeed);
+        }
     }
 
     public void stopEngine(){

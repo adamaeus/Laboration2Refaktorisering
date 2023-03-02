@@ -80,6 +80,10 @@ public class TruckBed {
     }
     */
 
+    public void closeRamp(){
+
+    }
+
     //-------------------LOAD METHODS-------------------\\
     public void load(Car car) {
         if (loadHelper(car)){
@@ -106,6 +110,9 @@ public class TruckBed {
     }
 
 
+    public void openRamp() {
+        openRamp();
+    }
 }
 
 

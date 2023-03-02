@@ -1,32 +1,34 @@
 package Controller;
 
 import MediatorPackage.ControllerInterface;
-import Model.MovingPackage.TimerListener;
+import Model.MovingPackage.World;
 import Model.Vehicle.Saab95;
 import Model.Vehicle.Scania;
 import Model.Vehicle.iVehicle;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Controller implements ControllerInterface {
 
 
+    private final World world;
 
-    private final TimerListener timerListener = new TimerListener();
+
 
 
     int gasAmount = 0;
     int brakeAmount = 0;
 
+    public Controller(World world) {
+        this.world = world;
+    }
 
 
     //--------------------CREATE ACTIONLISTENERS--------------------\\
     @Override
-    public ActionListener createStartEngineActionListener(){
+    public ActionListener createStartEngineActionListener() {
         return e -> startEngine();
     }
 
@@ -46,7 +48,7 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public ActionListener createTurnTurboOnActionListener() {
+    public ActionListener createTurnTurboOnActionListener(){
         return e -> turnTurboOn();
     }
 
@@ -70,15 +72,27 @@ public class Controller implements ControllerInterface {
         return e -> lowerBedButton();
     }
 
+
     @Override
     public ActionListener createTruckBedLiftActionListener() {
         return e -> liftBedButton();
     }
 
     @Override
+    public ActionListener createAddCarButton (){
+        return e -> addCarButton();
+    }
+
+    @Override
+    public ActionListener createRemoveCarButton(){
+        return e -> removeCarButton();
+    }
+
+
+    @Override
     public ChangeListener createGasSpinnerActionListener() {
         return e -> gasAmount = (int) ((JSpinner) e.getSource()).getValue();
-        }
+    }
 
     @Override
     public ChangeListener createBrakeSpinnerACtionListener() {
@@ -89,66 +103,71 @@ public class Controller implements ControllerInterface {
     //--------------------------------------------------//
 
 
-
-
-
-
     //--------------------METHOD DELEGATION TO MODEL--------------------\\
 
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (iVehicle vehicle : timerListener.getVehicleList()) {
+        for (iVehicle vehicle : world.getVehicleList()) {
             vehicle.brake(brake);
         }
     }
 
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (iVehicle vehicle : timerListener.getVehicleList()) {
+        for (iVehicle vehicle : world.getVehicleList()) {
             vehicle.gas(gas);
         }
     }
 
 
-    void turnLeft(){
-        for(iVehicle vehicle : timerListener.getVehicleList()){
+    void turnLeft() {
+        for (iVehicle vehicle : world.getVehicleList()) {
             vehicle.getMovingSystem().turnLeft();
         }
     }
 
 
-    void turnRight(){
-        for(iVehicle vehicle : timerListener.getVehicleList()){
+    void turnRight() {
+        for (iVehicle vehicle : world.getVehicleList()) {
             vehicle.getMovingSystem().turnRight();
         }
     }
 
-    void stopEngine(){
-        for(iVehicle vehicle : timerListener.getVehicleList()){
+    void stopEngine() {
+        for (iVehicle vehicle : world.getVehicleList()) {
             vehicle.getEngine().stopEngine();
         }
     }
 
-    void startEngine(){
-        for(iVehicle vehicle : timerListener.getVehicleList()){
+    public void startEngine() {
+        System.out.println("start Engine");
+        for (iVehicle vehicle : world.getVehicleList()) {
             vehicle.getEngine().startEngine();
         }
     }
 
-    void turnTurboOn(){
-        for(iVehicle vehicle : timerListener.getVehicleList()) {
+    void turnTurboOn() {
+        for (iVehicle vehicle : world.getVehicleList()) {
             if (vehicle instanceof Saab95) {
                 ((Saab95) vehicle).setTurboOn();
             }
         }
     }
 
-    void lowerBedButton(){
-        for(iVehicle vehicle : timerListener.getVehicleList()){
-            if(vehicle instanceof Scania) {
+    void turnTurboOff() {
+        for (iVehicle vehicle : world.getVehicleList()) {
+            if (vehicle instanceof Saab95) {
+                ((Saab95) vehicle).setTurboOff();
+            }
+        }
+    }
+
+    void lowerBedButton() {
+        for (iVehicle vehicle : world.getVehicleList()) {
+            if (vehicle instanceof Scania) {
                 ((Scania) vehicle).openRamp();
                 ((Scania) vehicle).setScaniaAngle(70);
-                if(((Scania) vehicle).getScaniaTruckBed().getCurrentAngle() == 70){
+                if (((Scania) vehicle).getScaniaTruckBed().getCurrentAngle() == 70) {
                     System.out.println("ramp is open");
                 }
             }
@@ -157,10 +176,22 @@ public class Controller implements ControllerInterface {
 
 
     void liftBedButton(){
-        for(iVehicle vehicle : timerListener.getVehicleList()){
+        for(iVehicle vehicle : world.getVehicleList()){
             if(vehicle instanceof Scania) {
                 ((Scania) vehicle).getScaniaTruckBed().closeRamp();
             }
         }
     }
+
+    void addCarButton(){
+        System.out.println("addCarButton");
+        world.addCars();
+    }
+
+
+    void removeCarButton(){
+        world.removeCars();
+    }
+
 }
+

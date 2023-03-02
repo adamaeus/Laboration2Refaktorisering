@@ -1,6 +1,11 @@
 package Model.MovingPackage;
 
-public class MovingSystem implements Movable {
+import Model.Vehicle.iVehicle;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MovingSystem implements Movable{
 
      public Directions direction = Directions.RIGHT;
 
@@ -44,6 +49,8 @@ public class MovingSystem implements Movable {
     }
 
     public void move(double currentSpeed) {
+        System.out.println(x);
+        System.out.println(y);
         switch (direction) {
             case LEFT -> x = x - currentSpeed;
             case RIGHT -> x = x + currentSpeed;
@@ -52,4 +59,8 @@ public class MovingSystem implements Movable {
         }
 
     }
+
+
+
+
 }

@@ -25,7 +25,12 @@ public interface ControllerInterface {
 
     ActionListener createTruckBedLiftActionListener();
 
+    ActionListener createAddCarButton();
+
+    ActionListener createRemoveCarButton();
+
     ChangeListener createGasSpinnerActionListener();
+
 
     ChangeListener createBrakeSpinnerACtionListener();
 
