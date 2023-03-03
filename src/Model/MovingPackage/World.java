@@ -34,29 +34,12 @@ public class World {
         timer.stop();
     }
 
-    public void run() {
-        while (true) {
-            try {
-                Thread.sleep(delay);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private final int delay = 50;
-
-
-
-
 
     private final ArrayList <iVehicle> vehicles = new ArrayList<>();
     public ArrayList<iVehicle> getVehicleList(){
         return vehicles;
     }
-
-
-
 
     private final List<Observer> observers = new ArrayList<>();
 
@@ -80,34 +63,6 @@ public class World {
 
     // CAR FACTORY CALL
 
-/*
-    private void addPoint (){
-        try {
-            if (vehiclePoints.size() < 10) {
-                vehiclePoints.add(new Point());
-            } else
-                throw new IndexOutOfBoundsException("Cannot add car: list is full");
-
-        }catch (IndexOutOfBoundsException e){
-            System.err.println(e.getMessage());
-        }
-    }
-
-
-    private void removePoint(){
-        try {
-            if (vehiclePoints.size() > 0) {
-                vehiclePoints.remove(vehiclePoints.size() - 1);
-            } else
-                throw new IndexOutOfBoundsException("Cannot remove car: list is empty");
-
-        } catch (IndexOutOfBoundsException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
-
- */
     public void addCars () {
         if (vehicles.size() < 6) {
             Random rand = new Random();
@@ -119,30 +74,6 @@ public class World {
             notifyObservers();
         }
     }
-
-    /*
-          /*
-            switch (boundRand) {
-                case 1 -> {
-                   iVehicle volvo240 = vehicleFactory.createVolvo();
-                    vehicles.add(volvo240);
-                    volvo240.getMovingSystem().setY(position);
-                }
-                case 2 -> {
-                    iVehicle saab95 = vehicleFactory.createSaab();
-                    vehicles.add(saab95);
-                    saab95.getMovingSystem().setY(position);
-                }
-                case 3 -> {
-                    iVehicle scania = vehicleFactory.createScania();
-                    vehicles.add(scania);
-                    scania.getMovingSystem().setY(position);
-                }
-            }
-            notifyObservers();
-        }
-
-             */
 
         public void removeCars () {
             if (vehicles.size() > 0) {

@@ -25,6 +25,8 @@ public class Mediator{
         bindBrakeSpinnerButton();
         bindTurboOnButton();
         bindTurboOffButton();
+        bindLowerTruckBedButton();
+        bindLiftTruckBedButton();
     }
 
     public void bindStartEngineButton() {

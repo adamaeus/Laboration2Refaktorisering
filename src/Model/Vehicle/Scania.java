@@ -3,6 +3,7 @@ package Model.Vehicle;
 import Model.LoadingPackage.TruckBed;
 
 import java.awt.*;
+import State.*;
 
 public class Scania extends Truck {
 
@@ -14,8 +15,10 @@ public class Scania extends Truck {
     private final TruckBed scaniaTruckBed = new TruckBed(1000, 70, "ScaniaFlak");
 
 
+    State ScaniaState;
     public Scania() {
         super("Scania", 2, Color.BLUE, 2000);
+        this.ScaniaState = new ClosedState();
     }
 
 
@@ -63,6 +66,7 @@ public class Scania extends Truck {
 
     //@Override
     public void load(Car car) {
+        ScaniaState = new OpenState();
         if(scaniaEngine.getCurrentSpeed() == 0){
             scaniaTruckBed.load(car);
         }
@@ -77,8 +81,10 @@ public class Scania extends Truck {
     }
 
 
+
     @Override
     protected void move() {
+        ScaniaState.move();
         truckMovingSystem.move(scaniaEngine.getCurrentSpeed());
     }
 

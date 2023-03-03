@@ -7,15 +7,13 @@ public class VehicleFactory {
 
 
     public iVehicle createVolvo() {
-        return new Volvo240().create();
+        return new Volvo240();
     }
-
     public iVehicle createSaab() {
-        return new Saab95().create();
+        return new Saab95();
     }
-
     public iVehicle createScania() {
-        return new Scania().create();
+        return new Scania();
     }
 
 

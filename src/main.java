@@ -1,6 +1,7 @@
 import Controller.Controller;
 import Model.MovingPackage.World;
 import Model.Vehicle.Scania;
+import Model.Vehicle.VehicleFactory;
 import Model.Vehicle.Volvo240;
 import Model.Vehicle.iVehicle;
 import View2d.ControlPanel;
@@ -18,9 +19,6 @@ public class main {
         Window window = new Window(world);
 
 
-
-
-       // Window window = new Window(world);
 
     }
 }
